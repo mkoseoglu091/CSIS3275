@@ -38,6 +38,7 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 1. To run the server, type **npm run server**
 2. To do a quick test, go to Postman, next to the dropdown that says GET, type **http://localhost:5000** and press SEND
 3. You will get a response saying API Running. This means the server is successfully running.
+4. Additional Postman Commands have been added to Postman Collections. Everyone needs to be added to view.
 
 <br></br>
 ## Github Rules
