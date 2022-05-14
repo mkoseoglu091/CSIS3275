@@ -29,6 +29,15 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 2. Settings -> Search: prettier -> Check: Jsx Single Quote, Check: Prettier Single Quote, Check: Prettier Semi 
 3. Ctrl + Shift + P -> Type: Open Settings -> Click: **Open Settings (JSON)** -> after the last item, put a comma. on the next line Add: "emmet.includeLanguages" : {"javascript" : "javascriptreact"}
 
+#### Dependencies (might add/remove some in the future)
+1. In VS Code open a new terminal (Terminal -> New Terminal)
+2. Paste following command: npm i express express-validator bcryptjs config gravatar jsonwebtoken mongoose request
+3. After that installs paste the following command: npm i -D nodemon concurrently
+
+<br></br>
+## How to Run
+1. To run the server, type **npm run server**
+
 <br></br>
 ## Github Rules
 1. When starting the day, get the most recent version of the project
