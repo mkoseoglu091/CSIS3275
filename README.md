@@ -13,7 +13,7 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 
 <br></br>
 
-## Setup
+## Setup For Team
 
 #### Installs
 
@@ -38,7 +38,11 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 2. Settings -> Search: prettier -> Check: Jsx Single Quote, Check: Prettier Single Quote, Check: Prettier Semi
 3. Ctrl + Shift + P -> Type: Open Settings -> Click: **Open Settings (JSON)** -> after the last item, put a comma. on the next line Add: "emmet.includeLanguages" : {"javascript" : "javascriptreact"}
 
-#### Dependencies (might add/remove some in the future)
+<br></br>
+
+## How to Run
+
+#### Dependencies
 
 1. Clone Repo
 2. In VS Code open a new terminal (Terminal -> New Terminal)
@@ -46,14 +50,12 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 4. From Trello under resources, get the default.json file and insert it in the config folder (this contains confidential credentials best kept out of github)
 5. Now you are ready to run the server
 
-<br></br>
+#### Running the Server
 
-## How to Run
-
-1. To run the server, type **npm run server** (to close server, on terminal use CTRL + C)
+1. To run the server, type **npm run server** in the terminal inside the main project folder (to close server, on terminal use CTRL + C)
 2. To do a quick test, go to Postman, next to the dropdown that says GET, type **http://localhost:5000** and press SEND
 3. You will get a response saying API Running. This means the server is successfully running.
-4. Additional Postman Commands have been added to Postman Collections. Everyone needs to be added to view.
+4. Additional Postman Commands have been added to Postman Collections. Everyone needs to be added to view. The Postman tests are also detailed in Trello under Resources
 
 <br></br>
 
