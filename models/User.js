@@ -26,6 +26,10 @@ const UserSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    admin: { // no way to create an admin user from frontend, can only me added manually. Admin users can modify other users tasks
+        type: Boolean,
+        default: false
     }
 });
 

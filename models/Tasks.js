@@ -15,6 +15,10 @@ const TaskSchema = new mongoose.Schema({
                 type: String,
                 required: true
             },
+            categoryID: {
+                type: String,
+                required: true
+            },
             categoryComplete: { // If all tasks in a category are complete set this to true
                 type: Boolean,
                 default: false
@@ -25,6 +29,10 @@ const TaskSchema = new mongoose.Schema({
             tasks: [ // an array of tasks within a category
                 {
                     taskName: { // name of task (Check out a book)
+                        type: String,
+                        required: true
+                    },
+                    taskID: {
                         type: String,
                         required: true
                     },
