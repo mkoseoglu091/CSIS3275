@@ -46,6 +46,12 @@ router.post('/', [ // this list of checks come from express-validator imported o
                 r: 'pg', // rating: pg so no inappropriate images
                 d: 'mm' // if no avatar found use default
             })
+            let admin;
+            if (req.body.admin) {
+                admin = req.body.admin;
+            } else {
+                admin = false;
+            }
 
             // create an instance of a user
             let user = new User({
@@ -53,7 +59,8 @@ router.post('/', [ // this list of checks come from express-validator imported o
                 email,
                 studentID,
                 avatar,
-                password
+                password,
+                admin
             });
 
             // Encrypt Password

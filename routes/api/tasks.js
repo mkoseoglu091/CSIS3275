@@ -6,6 +6,7 @@ const auth = require('../../middleware/auth'); // any request with auth as 2nd p
 const Tasks = require('../../models/Tasks');
 const User = require('../../models/User');
 const tasksJson = require('../../tasks/tasks.json');
+const {check, validationResult} = require('express-validator');
 
 // @route   GET api/tasks/me
 // @desc    Get current users tasks
@@ -74,8 +75,81 @@ router.post('/', auth, async (req, res) => {
 });
 
 
-// Update
-// this will be only available to admins, 
-// admins can search for a student ID, and update tasks once they are completed
+// @route   POST api/tasks/admin
+// @desc    Update task with provided code. Only for admin
+// @access  Private
+router.post('/admin', [auth, 
+    check('studentID', 'studentID is required').not().isEmpty(), 
+    check('taskID', 'taskID is required').not().isEmpty(),
+    check('taskComplete', 'A boolean is required').isBoolean()], 
+    async (req, res) => {
+
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) { // if there are errors
+        return res.status(400).json({ errors: errors.array() }); // 400 - bad request
+    }
+
+    // check if token belongs to admin
+    let aUser = await User.findById(req.user.id);
+    if(!aUser) { // no such user found in DB
+        return res.status(400).json({ errors: [  { msg: 'Invalid Credentials' }] });
+    }
+    if(!aUser.admin) { // user is not an admin
+        return res.status(400).json({ errors: [{ msg: 'You are not an admin' }] });
+    }
+
+    // get studentID and task code from request body
+    const {studentID, taskID, taskComplete} = req.body;
+
+    try {
+        let table = await Tasks.find({ studentID: studentID });
+        if(!table) { // student NOT found
+            return res.status(400).json({ errors: [{ msg: 'Student ID not found' }] });
+        }
+
+        // Find the task with the given taskID, and update taskComplete with the provided boolean
+        let modifiedTable = table[0];
+        let id = modifiedTable.id;
+
+        modifiedTable.category.forEach((c) => {
+            c.tasks.forEach((t) => {
+                if (t.taskID === taskID) {
+                    t.taskComplete = taskComplete;
+                    if (taskComplete) { // modified to being true
+                        t.taskCompletionDate = Date.now();
+                        return;
+                    }
+                }
+            });
+        });
+
+        // check other tasks in the same category if all are complete mark category as complete and add completion date
+        let [categoryID, _] = taskID.split('-'); // extract categoryID
+
+        modifiedTable.category.forEach((c) => {
+            if (c.categoryID === categoryID) {
+                if(c.tasks.every((t) => t.taskComplete === true)) { // if every taskComplete in t is true
+                    c.categoryComplete = true;
+                    c.categoryCompletionDate = Date.now();
+                    return;
+                }
+            }
+        });
+
+        // Update table and save to DB
+        modifiedTable = await Tasks.findOneAndUpdate(
+            { studentID: studentID},
+            { $set: modifiedTable},
+            { new: true }
+        );
+
+        return res.json(modifiedTable);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 
 module.exports = router;
