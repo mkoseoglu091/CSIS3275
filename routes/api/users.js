@@ -4,6 +4,8 @@ const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar'); // fetches google account avatar
 const bcrypt = require('bcryptjs'); // for hashing the password for extra protection
+const jwt = require('jsonwebtoken'); // web tokens are used for accessing protected pages
+const config = require('config'); // to access environment variables
 const {check, validationResult} = require('express-validator'); // required for validation during registery
 
 const User = require('../../models/User'); // get the user model for DB
@@ -62,8 +64,20 @@ async (req, res) => {
         await user.save();
 
         // Return JsonWebToken (JWT is used for accessing protected pages that require a password)
+        const payload = {
+            user: {
+                id: user.id // this is the automatically generated ID number in MongoDB
+            }
+        }
 
-        res.send('User Registered');
+        jwt.sign(
+            payload, 
+            config.get('jwtSecret'),
+            { expiresIn: 3600 }, // The user is signed out after 1 hour (3600 seconds)
+            (err, token) => {
+                if(err) throw err;
+                res.json({ token })
+            });
 
     } catch(err) {
         console.error(err.message);
