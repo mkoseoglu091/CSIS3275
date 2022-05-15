@@ -73,7 +73,7 @@ router.post('/', [ // this list of checks come from express-validator imported o
             jwt.sign(
                 payload, 
                 config.get('jwtSecret'),
-                { expiresIn: 3600 }, // The user is signed out after 1 hour (3600 seconds)
+                { expiresIn: 3600000 }, // IMPORTANT!! Change this to 3600 before finishing project so token expires in 1 hour
                 (err, token) => {
                     if(err) throw err;
                     res.json({ token })
