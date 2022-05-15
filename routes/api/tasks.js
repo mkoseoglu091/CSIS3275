@@ -5,6 +5,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth'); // any request with auth as 2nd param will be private
 const Tasks = require('../../models/Tasks');
 const User = require('../../models/User');
+const tasksJson = require('../../tasks/tasks.json');
 
 // @route   GET api/tasks/me
 // @desc    Get current users tasks
@@ -40,12 +41,27 @@ router.post('/', auth, async (req, res) => {
         }
 
         // Add categories and Tasks to the table and save it to DB
-        // json is ready at ../../tasks/tasks.json, taskTable.category needs to be filled with the json. Research how.
-        // require('path/json') works but couldn't successfully assign it to the table, might need to do it manually in a loop
+        table = new Tasks(taskTable);
+        tasksJson.forEach((c)=> {
+            let cat = {
+                categoryTitle: c.categoryTitle,
+                categoryID: c.categoryID,
+                tasks: []
+            };
+            c.tasks.forEach((t) => {
+                let task = {
+                    taskName: t.taskName,
+                    taskID: t.taskID,
+                    taskDesc: t.taskDesc,
+                    taskLoc: t.taskLoc,
+                };
+                cat.tasks.push(task);
+            });
+            table.category.push(cat);
+        });
 
         // Save tasks table and return it as the response
-        table = new Tasks(taskTable);
-        await Tasks.bulkSave();
+        await table.save();
         res.json(table);
 
     } catch (err) {

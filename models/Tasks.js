@@ -9,7 +9,7 @@ const TaskSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, // gets its ObjectID from the objectID of a user model. Similar to SQL foreign key
         ref: 'user'
     },
-    Category: [
+    category: [
         {
             categoryTitle: { // the title of the category, can be things like Library, Enrolment Services etc.
                 type: String,

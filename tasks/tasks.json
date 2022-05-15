@@ -8,24 +8,24 @@
             {
                 "taskName": "Use the book search system",
                 "taskID": "001-001",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Check out a book",
                 "taskID": "001-002",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Return a book",
                 "taskID": "001-003",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             }
@@ -40,32 +40,32 @@
             {
                 "taskName": "Visit enrolment services",
                 "taskID": "002-001",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Get Course Planning Support",
                 "taskID": "002-002",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Learn How and When to Drop Courses",
                 "taskID": "002-003",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Learn How to Waitlist",
                 "taskID": "002-004",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             }
@@ -80,24 +80,24 @@
             {
                 "taskName": "Learn How to Receive Tutoring",
                 "taskID": "003-001",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Learn A",
                 "taskID": "003-002",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Learn B",
                 "taskID": "003-003",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             }
@@ -112,16 +112,16 @@
             {
                 "taskName": "How to Access Career Hub",
                 "taskID": "004-001",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Attend a Co-Op seminar",
                 "taskID": "004-002",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             }
@@ -136,24 +136,24 @@
             {
                 "taskName": "Learn how to access Counselling",
                 "taskID": "005-001",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Learn A",
                 "taskID": "005-001",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Learn B",
                 "taskID": "005-002",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             }
@@ -168,24 +168,24 @@
             {
                 "taskName": "Learn how to find clubs",
                 "taskID": "006-001",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Join a social Club",
                 "taskID": "006-002",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Attend a Club Meeting",
                 "taskID": "006-003",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             }
@@ -200,16 +200,16 @@
             {
                 "taskName": "Learn how to use the fitness centre",
                 "taskID": "007-001",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Take a class at the fitness centre",
                 "taskID": "007-002",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             }
@@ -224,40 +224,40 @@
             {
                 "taskName": "Visit X",
                 "taskID": "008-001",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Visit Y",
                 "taskID": "008-002",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Visit Z",
                 "taskID": "008-003",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Visit A",
                 "taskID": "008-004",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             },
             {
                 "taskName": "Visit B",
                 "taskID": "008-005",
-                "taskDesc": "",
-                "taskLoc": "",
+                "taskDesc": "a",
+                "taskLoc": "a",
                 "taskCompletionDate": null,
                 "taskComplete": false
             }
