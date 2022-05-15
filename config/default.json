@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://mehmet1234:mehmet1234@csis3275.q2i0l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    "jwtSecret" : "mysecrettoken"
+    "jwtSecret": "mysecrettoken",
+    "expiration": 360000,
+    "_comment": "change expiration to 3600 before finishing project so users are signed out after 1 hour"
 }
