@@ -9,7 +9,7 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 - Mehmet Koseoglu (300351078)
 - William Jongmin Lee (300341465)
 - Ozgen Akgun (300346378)
--
+- Wenqi Wang (300334323)
 
 <br></br>
 
@@ -56,7 +56,7 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 
 ## Github Rules
 
-1. When starting the day, get the most recent version of the project (Fetch Origin)
+1. When starting the day, get the most recent version of the project (Fetch Origin -> Pull Origin)
 2. Create a new branch named with the following convention (Your Name - Feature You Are Working On, Ex: Mehmet-Frontend-Tasks-Section)
 3. Once You are done with the feature, tested it to make sure it works without issues
 4. Create a Pull request (once approved this will merge your branch with the main branch)
