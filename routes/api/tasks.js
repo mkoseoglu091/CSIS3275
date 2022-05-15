@@ -12,12 +12,15 @@ const tasksJson = require('../../tasks/tasks.json');
 // @access  Private
 router.get('/me', auth, async (req, res) => {
     try {
-        const tasks = await Tasks.findOne({ user: req.user.id }).populate('user', ['name', 'avatar']); // find the user of the user who's token is provided
+        const tasks = await Tasks.findOne({ user: req.user.id }).populate('user', ['name', 'studentID', 'avatar']); // find the user of the user who's token is provided
         
         // if there is no such table
         if(!tasks) {
             return res.status(400).json({ msg: 'There is no tasks for this user' });
         }
+
+        res.json(tasks);
+        
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
