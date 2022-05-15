@@ -25,5 +25,11 @@ router.get('/me', auth, async (req, res) => {
 
 
 // Start Orientation
+// this creates the tasks model for a user, automatically fills its contents with the required tasks
+
+
+// Update
+// this will be only available to admins, 
+// admins can search for a student ID, and update tasks once they are completed
 
 module.exports = router;
