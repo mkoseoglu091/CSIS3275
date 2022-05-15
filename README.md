@@ -40,8 +40,11 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 
 #### Dependencies (might add/remove some in the future)
 
-1. In VS Code open a new terminal (Terminal -> New Terminal)
-2. Type: **npm install**. This will install all dependencies listen in the package.json file
+1. Clone Repo
+2. In VS Code open a new terminal (Terminal -> New Terminal)
+3. Type: **npm install**. This will install all dependencies listen in the package.json file
+4. From Trello under resources, get the default.json file and insert it in the config folder (this contains confidential credentials best kept out of github)
+5. Now you are ready to run the server
 
 <br></br>
 
@@ -68,4 +71,5 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 <br></br>
 
 ## Important
+
 Before finalising the project at the end of the semester, change config/default.json -> expiration to 3600, so users are signed off after 1 hour of inactivity
