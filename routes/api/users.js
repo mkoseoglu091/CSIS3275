@@ -61,7 +61,7 @@ async (req, res) => {
         // Save user to database
         await user.save();
 
-        // Return jsonwebtoken (so once user registers they can also login automatically)
+        // Return JsonWebToken (JWT is used for accessing protected pages that require a password)
 
         res.send('User Registered');
 
