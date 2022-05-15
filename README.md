@@ -9,7 +9,7 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 - Mehmet Koseoglu (300351078)
 - William Jongmin Lee (300341465)
 - Ozgen Akgun (300346378)
--
+- Wenqi Wang (300334323)
 
 <br></br>
 
