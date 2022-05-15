@@ -55,4 +55,4 @@ const PetSchema = new mongoose.Schema({
     }
 });
 
-module.exports = Profile = mongoose.model('pet', PetSchema);
+module.exports = Pet = mongoose.model('pet', PetSchema);

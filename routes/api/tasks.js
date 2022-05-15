@@ -11,9 +11,9 @@ const User = require('../../models/User');
 // @access  Private
 router.get('/me', auth, async (req, res) => {
     try {
-        const tasks = await Tasks.findOne({ user: req.user.id }).populate('user', ['name', 'avatar']); // find the profile of the user who's token is provided
+        const tasks = await Tasks.findOne({ user: req.user.id }).populate('user', ['name', 'avatar']); // find the user of the user who's token is provided
         
-        // if there is no profile
+        // if there is no such table
         if(!tasks) {
             return res.status(400).json({ msg: 'There is no tasks for this user' });
         }
