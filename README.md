@@ -64,3 +64,8 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 6. Once Approved Merge your Pull request
 7. Delete the old branch, now your features are added to the main project.
 8. When others ask for review, make sure to go over their changes (ideally together), and test the feature. Don't approve without making sure the changes aren't messing up the project.
+
+<br></br>
+
+## Important
+Before finalising the project at the end of the semester, change config/default.json -> expiration to 3600, so users are signed off after 1 hour of inactivity
