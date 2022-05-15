@@ -24,8 +24,37 @@ router.get('/me', auth, async (req, res) => {
 });
 
 
-// Start Orientation
-// this creates the tasks model for a user, automatically fills its contents with the required tasks
+// @route   POST api/tasks
+// @desc    Create a tasks table for the user when the user starts orientation
+// @access  Private
+router.post('/', auth, async (req, res) => {
+    // Build Tasks
+    const taskTable = {};
+    taskTable.user = req.user.id; // set the user to be the same user as the owner of the token
+
+    // Make sure a task table hasn't already been created for the user
+    try {
+        let table = await Tasks.findOne({ user: req.user.id });
+        if(table) { // there is already a table for this user
+            return res.status(400).json({ errors: [{ msg: 'Task table already exists' }] });
+        }
+
+        // Add categories and Tasks to the table and save it to DB
+
+        // might have a separate json file that has all the category and task info
+        //
+        //
+
+        // Save tasks table and return it as the response
+        table = new Tasks(taskTable);
+        await Tasks.bulkSave();
+        res.json(table);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 
 // Update
