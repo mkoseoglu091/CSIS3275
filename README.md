@@ -56,13 +56,13 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 
 ## Github Rules
 
-1. When starting the day, get the most recent version of the project
-2. Create a new branch named with the following convention (Your Name - Feature You Are Working On)
-3. Once You are done with the feature, tested it to make sure it works
-4. Create a Pull request
-5. Notify others so they can review changes
+1. When starting the day, get the most recent version of the project (Fetch Origin)
+2. Create a new branch named with the following convention (Your Name - Feature You Are Working On, Ex: Mehmet-Frontend-Tasks-Section)
+3. Once You are done with the feature, tested it to make sure it works without issues
+4. Create a Pull request (once approved this will merge your branch with the main branch)
+5. Notify others so they can review changes (at least 1 review and approval is required before merging is allowed)
 6. Once Approved Merge your Pull request
-7. Delete the old branch, now your features are added to the main project.
+7. Delete the old branch, now your features are added to the main project. (so the repo is not cluttered with a lot of old branches)
 8. When others ask for review, make sure to go over their changes (ideally together), and test the feature. Don't approve without making sure the changes aren't messing up the project.
 
 <br></br>
