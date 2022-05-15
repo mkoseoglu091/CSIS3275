@@ -41,6 +41,7 @@ router.post('/', auth, async (req, res) => {
 
         // Add categories and Tasks to the table and save it to DB
         // json is ready at ../../tasks/tasks.json, taskTable.category needs to be filled with the json. Research how.
+        // require('path/json') works but couldn't successfully assign it to the table, might need to do it manually in a loop
 
         // Save tasks table and return it as the response
         table = new Tasks(taskTable);
