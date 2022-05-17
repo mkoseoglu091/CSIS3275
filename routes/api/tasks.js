@@ -118,6 +118,9 @@ router.post('/admin', [auth,
                     if (taskComplete) { // modified to being true
                         t.taskCompletionDate = Date.now();
                         return;
+                    } else {
+                        t.taskCompletionDate = null;
+                        return;
                     }
                 }
             });
@@ -131,6 +134,10 @@ router.post('/admin', [auth,
                 if(c.tasks.every((t) => t.taskComplete === true)) { // if every taskComplete in t is true
                     c.categoryComplete = true;
                     c.categoryCompletionDate = Date.now();
+                    return;
+                } else {
+                    c.categoryComplete = false;
+                    c.categoryCompletionDate = null;
                     return;
                 }
             }
