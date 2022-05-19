@@ -7,6 +7,8 @@ const bcrypt = require('bcryptjs'); // for hashing the password for extra protec
 const jwt = require('jsonwebtoken'); // web tokens are used for accessing protected pages
 const config = require('config'); // to access environment variables
 const {check, validationResult} = require('express-validator'); // required for validation during registery
+const auth = require('../../middleware/auth'); // to make use of auth middleware, just add it before (req, res) ex: '/' , auth, (req, res) =>...
+
 
 const User = require('../../models/User'); // get the user model for DB
 
@@ -91,5 +93,23 @@ router.post('/', [ // this list of checks come from express-validator imported o
             res.status(500).send('Server Error');
         }
 });
+
+// @route   DELETE api/users
+// @desc    DELETE User, Tasks table and Pet
+// @access  Private
+router.delete('/', auth, async (req,res) => {
+    try {
+        // remove all tables belonging to the user
+        await User.findOneAndRemove({ _id: req.user.id });
+        await Tasks.findOneAndRemove({ user: req.user.id });
+        //@todo remove Pet of user as well!!
+
+        res.json({ msg: 'User Deleted' });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+})
+
 
 module.exports = router;
