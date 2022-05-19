@@ -57,6 +57,16 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 3. You will get a response saying API Running. This means the server is successfully running.
 4. Additional Postman Commands have been added to Postman Collections. Everyone needs to be added to view. The Postman tests are also detailed in Trello under Resources
 
+#### Running the Client
+
+1. To run the client, type **npm run client**
+2. This will automatically open a browser window to http://localhost:3000, if it doesn't you can manually open it.
+
+#### Running Both Server and Client at the same time
+
+1. Type **npm run dev**
+2. We will use this most once we have a backend and frontend working at the same time.
+
 <br></br>
 
 ## Github Rules
