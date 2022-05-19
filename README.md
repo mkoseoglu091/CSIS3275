@@ -48,7 +48,10 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 2. In VS Code open a new terminal (Terminal -> New Terminal)
 3. Type: **npm install**. This will install all dependencies listen in the package.json file
 4. From Trello under resources, get the default.json file and insert it in the config folder (this contains confidential credentials best kept out of github)
-5. Now you are ready to run the server
+5. To install client dependencies, in your terminal type **cd client**, this will Change Directory to the client directory. Client has its own dependencies.
+6. Now again type and run **npm install**, this time the client dependencies will be installed.
+7. To go back to the root folder, type **cd ..**, this will take you back to the main project folder
+8. Now you are ready to run the server, the client, or both
 
 #### Running the Server
 
