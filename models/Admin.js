@@ -1,7 +1,7 @@
 // user model for the database
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
+const AdminSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    studentID: {
+    adminID: {
         type: String,
         required: true,
         unique: true
@@ -29,4 +29,4 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-module.exports = User = mongoose.model('user', UserSchema);
+module.exports = Admin = mongoose.model('admin', AdminSchema);

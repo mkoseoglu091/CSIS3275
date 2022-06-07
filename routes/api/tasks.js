@@ -5,6 +5,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth'); // any request with auth as 2nd param will be private
 const Tasks = require('../../models/Tasks');
 const User = require('../../models/User');
+const Admin = require('../../models/Admin');
 const tasksJson = require('../../tasks/tasks.json');
 const {check, validationResult} = require('express-validator');
 
@@ -90,12 +91,9 @@ router.post('/admin', [auth,
     }
 
     // check if token belongs to admin
-    let aUser = await User.findById(req.user.id);
-    if(!aUser) { // no such user found in DB
+    let adminA = await Admin.findById(req.user.id);
+    if(!adminA) { // no such user found in DB
         return res.status(400).json({ errors: [  { msg: 'Invalid Credentials' }] });
-    }
-    if(!aUser.admin) { // user is not an admin
-        return res.status(400).json({ errors: [{ msg: 'You are not an admin' }] });
     }
 
     // get studentID and task code from request body

@@ -13,6 +13,7 @@ app.get('/', (req, res) => res.send('API Running'));
 
 // Define Routes
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/admin', require('./routes/api/admin'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/pet', require('./routes/api/pet'));
 app.use('/api/tasks', require('./routes/api/tasks'));
