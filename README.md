@@ -62,8 +62,13 @@ This is a web app group project for Douglas College's CSIS-3275 Software Enginee
 
 #### Running the Client
 
-1. To run the client, type **npm run client**
-2. This will automatically open a browser window to http://localhost:3000, if it doesn't you can manually open it.
+1. Install Node.js in your laptop
+2. Open the entire folder in visual studio code, then open Terminal
+3. In terminal, type "cd client/"
+4. Type "npm install"
+5. Type "npm install react-scripts"
+6. Type "npm start"
+7. To access frontend from mobile phone, first make sure your mobile phone is connected to the same network as laptop. Then, check 'network preference' in your laptop to obtain private network address. Then open browser in mobile phone and input 'private network/3000'. Note that this approach doesn't work at a public network such as Douglas College Internal. The possible reason may be firewall. Use your home Wi-Fi or personal hotspot for accessing pages from mobile.
 
 #### Running Both Server and Client at the same time
 
