@@ -18,6 +18,14 @@ const RegisterPage = () => {
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
+    // temporary
+  const onSubmit = async e => {
+    e.preventDefault();
+    console.log('success...');
+  }
+
+    // how to do it with axios. This works for sure
+    /*
     const onSubmit = async e => {
       e.preventDefault();
       if(password !== password2) {
@@ -46,6 +54,7 @@ const RegisterPage = () => {
         }
       }
     }
+    */
 
     return (
       <Fragment>
