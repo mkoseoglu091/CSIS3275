@@ -40,7 +40,7 @@ router.get('/admin', auth, async (req, res) => {
 // @desc    Authenticate User & get token
 // @access  Public
 router.post('/', [ // this list of checks come from express-validator imported on line 5
-    check('email', 'Please include a valid email').isEmail(),
+    check('studentID', 'Student ID is required').exists(),
     check('password', 'Password is required').exists()
     ], 
     async (req, res) => {
@@ -49,11 +49,11 @@ router.post('/', [ // this list of checks come from express-validator imported o
             return res.status(400).json({ errors: errors.array() }); // 400 - bad request
         }
 
-        const {email, password} = req.body;
+        const {studentID, password} = req.body;
 
         try {
             // See if user exists
-            let user = await User.findOne({ email });
+            let user = await User.findOne({ studentID });
             if (!user) { // if there is no such user
                 return res.status(400).json({ errors: [  { msg: 'Invalid Credentials' }] });
             }

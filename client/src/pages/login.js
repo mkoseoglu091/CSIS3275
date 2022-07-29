@@ -1,9 +1,11 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import '../design/login.css'
-import axios from 'axios';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../actions/auth';
 
-const LoginPage = () => {
+const LoginPage = ({ login }) => {
 
   const [formData, setFormData] = useState({
     studentID: '',
@@ -17,7 +19,7 @@ const LoginPage = () => {
   // temporary
   const onSubmit = async e => {
     e.preventDefault();
-    console.log('success...');
+    login(studentID, password);
   }
 
 
@@ -28,11 +30,11 @@ const LoginPage = () => {
         <form id="loginForm" className="form" onSubmit={e => onSubmit(e)}>
             <label htmlFor="stuid"><span className="text">ID</span></label>
             <br />
-            <input type="text" id="stuID" name="studentID" value={studentID} onChange={e => onChange(e)} required/>
+            <input type="text" id="stuID" name="studentID" value={studentID} onChange={e => onChange(e)} />
             <br />
             <label htmlFor="stupw"><span className="text">Password</span></label>
             <br />
-            <input type="text" id="stuPW" name="password" value={password} onChange={e => onChange(e)} required />
+            <input type="password" id="stuPW" name="password" value={password} onChange={e => onChange(e)} />
             <button type="submit" className="btn btn-primary" id="loginButn">LOGIN</button>
         </form>
         {/*<Link to={"./main"}><button type="submit" className="btn btn-primary" id="loginButn">LOGIN</button></Link>*/}
@@ -45,6 +47,10 @@ const LoginPage = () => {
       </Fragment>
     );
   }
+
+  LoginPage.propTypes = {
+    login: PropTypes.func.isRequired
+  }
   
-  export default LoginPage;
+  export default connect(null, { login })(LoginPage);
   
