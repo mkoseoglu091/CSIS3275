@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import '../design/register.css';
 import BackArrow from "../resources/backArrow.png";
 import { connect } from 'react-redux';
@@ -7,7 +7,7 @@ import { setAlert } from '../actions/alert';
 import { register } from '../actions/auth';
 import PropTypes from 'prop-types'
 
-const RegisterPage = ({ setAlert, register }) => {
+const RegisterPage = ({ setAlert, register, isAuthenticated }) => {
 
     const [formData, setFormData] = useState({
       studentID: '',
@@ -35,6 +35,10 @@ const RegisterPage = ({ setAlert, register }) => {
         });
       }
   };
+
+  if(isAuthenticated) {
+    return <Redirect to="/main" />
+  }
 
     return (
       <Fragment>
@@ -77,7 +81,12 @@ const RegisterPage = ({ setAlert, register }) => {
 
   RegisterPage.propTypes = {
     setAlert: PropTypes.func.isRequired,
-    register: PropTypes.func.isRequired
+    register: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
   };
+
+  const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+  });
   
-  export default connect(null, { setAlert, register })(RegisterPage);
+  export default connect(mapStateToProps, { setAlert, register })(RegisterPage);
