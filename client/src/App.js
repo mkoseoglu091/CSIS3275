@@ -11,6 +11,7 @@ import SettingPage from './pages/setting';
 import TaskListPage from './pages/taskList';
 import TaskDetailPage from './pages/taskListDetail';
 import WardrobePage from './pages/wardrobe';
+import Alert from './pages/Alert';
 
 //redux
 import { Provider } from 'react-redux';
@@ -21,6 +22,7 @@ const App = () => {
     <Provider store={store}>
     <React.StrictMode>
         <BrowserRouter>
+                <Alert />
                 <Switch>
                     <Route exact path='/'>
                         <LoginPage />

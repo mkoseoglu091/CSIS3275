@@ -33,10 +33,9 @@ const LoginPage = () => {
             <label htmlFor="stupw"><span className="text">Password</span></label>
             <br />
             <input type="text" id="stuPW" name="password" value={password} onChange={e => onChange(e)} required />
-            <input type="submit" className="btn btn-primaty" id="loginButn" value="LOGIN"/>
+            <button type="submit" className="btn btn-primary" id="loginButn">LOGIN</button>
         </form>
-
-        {/*<Link to={"./main"}><button id="loginButn">LOGIN</button></Link>*/}
+        {/*<Link to={"./main"}><button type="submit" className="btn btn-primary" id="loginButn">LOGIN</button></Link>*/}
 
         <div id="loginOther">
             <p id="forget"><span className="text">Forget Password?</span></p>

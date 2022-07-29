@@ -2,9 +2,12 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import '../design/register.css';
 import BackArrow from "../resources/backArrow.png";
+import { connect } from 'react-redux';
+import { setAlert } from '../actions/alert';
+import PropTypes from 'prop-types'
 import axios from 'axios';
 
-const RegisterPage = () => {
+const RegisterPage = ({ setAlert }) => {
 
     const [formData, setFormData] = useState({
       studentID: '',
@@ -21,7 +24,11 @@ const RegisterPage = () => {
     // temporary
   const onSubmit = async e => {
     e.preventDefault();
-    console.log('success...');
+      if(password !== password2) {
+        setAlert('Passwords do not match', 'danger');
+      } else {
+        console.log('Success');
+        }
   }
 
     // how to do it with axios. This works for sure
@@ -87,13 +94,16 @@ const RegisterPage = () => {
         <label htmlFor="stupwc" id="pwconfirm"><span className="text">Password Confirm</span></label>
         <br />
         <input type="password" id="stuPWC" name="password2" defaultValue={password2} onChange={e => onChange(e)} required/>
-        <input type="submit" className="btn btn-primaty" id="registerButn" value="Register"/>
+        <button type="submit" className="btn btn-primary" id="registerButn">REGISTER</button>
     </form>
 
-    {/*<Link to={"./"}><button id="registerButn">REGISTER</button></Link>*/}
+    {/*<Link to={"./"}><button type="submit" className="btn btn-primary" id="registerButn">REGISTER</button></Link>*/}
       </Fragment>
     );
-  }
+  };
+
+  RegisterPage.propTypes = {
+    setAlert: PropTypes.func.isRequired
+  };
   
-  export default RegisterPage;
-  
+  export default connect(null, { setAlert })(RegisterPage);
