@@ -1,18 +1,18 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import '../design/login.css'
 
 function LoginPage() {
     return (
-      <div>
-        <p id="loginTitle"><span class="text">Douglas OrIentation</span></p>
+      <Fragment>
+        <p id="loginTitle"><span className="text">Douglas OrIentation</span></p>
 
         <form id="loginForm">
-            <label for="stuid"><span class="text">ID</span></label>
+            <label for="stuid"><span className="text">ID</span></label>
             <br />
             <input type="text" id="stuID" name="stuid" />
             <br />
-            <label for="stupw"><span class="text">Password</span></label>
+            <label for="stupw"><span className="text">Password</span></label>
             <br />
             <input type="text" id="stuPW" name="stupw" />
         </form>
@@ -20,11 +20,11 @@ function LoginPage() {
         <Link to={"./main"}><button id="loginButn">LOGIN</button></Link>
 
         <div id="loginOther">
-            <p id="forget"><span class="text">Forget Password?</span></p>
-            <p id="register"><span class="text">Don't have an account?</span></p>
+            <p id="forget"><span className="text">Forget Password?</span></p>
+            <p id="register"><span className="text">Don't have an account?</span></p>
             <Link to={"/register"} id="regisLink">Register</Link>
         </div>
-      </div>
+      </Fragment>
     );
   }
   

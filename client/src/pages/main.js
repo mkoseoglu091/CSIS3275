@@ -1,23 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import '../design/main.css';
 import MascotImage from "../resources/roary.png";
 
 function MainPage() {
     return (
-      <div>
+      <Fragment>
         <div id="grid">
         <p id="mainTitle">
-            <span class="text">DOUGLAS COLLEGE</span>
+            <span className="text">DOUGLAS COLLEGE</span>
         </p>
 
         <img id="mascot" src={MascotImage} alt="roary" />
 
         <div id="mainButton">
-            <Link to={"/taskList"}><button class="mainButn">TASK LIST</button></Link>
-            <Link to={"/wardrobe"}><button class="mainButn">WARDROBE</button></Link>
-            <Link to={"/setting"}><button class="mainButn">SETTINGS</button></Link>
-            <Link to={"/"}><button class="mainButn">LOGOUT</button></Link>
+            <Link to={"/taskList"}><button className="mainButn">TASK LIST</button></Link>
+            <Link to={"/wardrobe"}><button className="mainButn">WARDROBE</button></Link>
+            <Link to={"/setting"}><button className="mainButn">SETTINGS</button></Link>
+            <Link to={"/"}><button className="mainButn">LOGOUT</button></Link>
         </div>
     
         <div id="mascotName">
@@ -26,7 +26,7 @@ function MainPage() {
             <p id="Name">ROARY</p>
         </div>
       </div>
-    </div>
+    </Fragment>
     );
   }
   
