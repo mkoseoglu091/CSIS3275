@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import ContactAdminPage from './pages/contactAdmin';
 import LoginPage from './pages/login';
 import MainPage from './pages/main';
@@ -43,6 +43,9 @@ root.render(
                 </Route>
                 <Route path='/wardrobe'>
                     <WardrobePage />
+                </Route>
+                <Route path='/game'>
+                    <Redirect push to={"questions.html"} />
                 </Route>
                 {/* <Route path='/game/gameOne'>
                     <GameOne />
