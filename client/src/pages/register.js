@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { setAlert } from '../actions/alert';
 import { register } from '../actions/auth';
 import PropTypes from 'prop-types'
-import axios from 'axios';
 
 const RegisterPage = ({ setAlert, register }) => {
 
@@ -36,38 +35,6 @@ const RegisterPage = ({ setAlert, register }) => {
         });
       }
   };
-
-    // how to do it with axios. This works for sure
-    /*
-    const onSubmit = async e => {
-      e.preventDefault();
-      if(password !== password2) {
-        console.log('Passwords do not match');
-      } else {
-        const newUser = {
-          studentID,
-          email,
-          name,
-          password
-        }
-
-        try {
-          const config = {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }
-
-          const body = JSON.stringify(newUser);
-
-          const res = await axios.post('/api/users', body, config);
-          console.log(res.data);
-        } catch(err) {
-          console.error(err.response.data);
-        }
-      }
-    }
-    */
 
     return (
       <Fragment>
