@@ -2,27 +2,48 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import '../design/register.css';
 import BackArrow from "../resources/backArrow.png";
+import axios from 'axios';
 
 const RegisterPage = () => {
 
     const [formData, setFormData] = useState({
-      id: '',
+      studentID: '',
       email: '',
       name: '',
       password: '',
       password2: ''
     });
 
-    const { id, email, name, password, password2 } = formData;
+    const { studentID, email, name, password, password2 } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
       e.preventDefault();
       if(password !== password2) {
         console.log('Passwords do not match');
       } else {
-        console.log(formData);
+        const newUser = {
+          studentID,
+          email,
+          name,
+          password
+        }
+
+        try {
+          const config = {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+
+          const body = JSON.stringify(newUser);
+
+          const res = await axios.post('/api/users', body, config);
+          console.log(res.data);
+        } catch(err) {
+          console.error(err.response.data);
+        }
       }
     }
 
@@ -40,7 +61,7 @@ const RegisterPage = () => {
     <form id="registerForm" className="form" onSubmit={e => onSubmit(e)}>
         <label htmlFor="stuid"><span className="text">ID</span></label>
         <br />
-        <input type="text" id="stuID" name="id" defaultValue={id} onChange={e => onChange(e)} required />
+        <input type="text" id="stuID" name="studentID" defaultValue={studentID} onChange={e => onChange(e)} required />
         <br />
         <label htmlFor="stuemail"><span className="text">Email</span></label>
         <br />
