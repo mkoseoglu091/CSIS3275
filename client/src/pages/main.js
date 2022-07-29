@@ -17,11 +17,11 @@ function MainPage() {
             <Link to={"/taskList"}><button class="mainButn">TASK LIST</button></Link>
             <Link to={"/wardrobe"}><button class="mainButn">WARDROBE</button></Link>
             <Link to={"/setting"}><button class="mainButn">SETTINGS</button></Link>
-            <a href="/questions.html"><button class="mainButn">PLAY</button></a>
             <Link to={"/"}><button class="mainButn">LOGOUT</button></Link>
         </div>
     
         <div id="mascotName">
+            <a href="/questions.html"><button id="playButn">PLAY</button></a>
             <p id="nameLabel">MASCOT NAME :</p>
             <p id="Name">ROARY</p>
         </div>

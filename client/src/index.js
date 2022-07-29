@@ -11,8 +11,6 @@ import SettingPage from './pages/setting';
 import TaskListPage from './pages/taskList';
 import TaskDetailPage from './pages/taskListDetail';
 import WardrobePage from './pages/wardrobe';
-// import GameOne from './pages/Games/game1';
-
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -47,9 +45,6 @@ root.render(
                 <Route path='/game'>
                     <Redirect push to={"questions.html"} />
                 </Route>
-                {/* <Route path='/game/gameOne'>
-                    <GameOne />
-                </Route> */}
             </Switch>
         </BrowserRouter>
   </React.StrictMode>

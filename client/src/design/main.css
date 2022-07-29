@@ -24,7 +24,6 @@
 .mainButn {
     width: 38vw;
     height: auto;
-    display: block;
     margin-top: 1.2vh;
     font-size: 5.1vw;
     padding: 1.3vh 3vw;
@@ -37,6 +36,16 @@
     height: fit-content;
     align-self: end;
     margin-right: 1vw;
+}
+
+#playButn {
+    width: 37vw;
+    height: auto;
+    font-size: 6.2vw;
+    padding: 1.6vh 1.8vw;
+    float: right;
+    margin-bottom: 4.3vh;
+    margin-right: 5vw;
 }
 
 #mascot{
