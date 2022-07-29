@@ -8,11 +8,11 @@ function LoginPage() {
         <p id="loginTitle"><span className="text">Douglas OrIentation</span></p>
 
         <form id="loginForm">
-            <label for="stuid"><span className="text">ID</span></label>
+            <label htmlFor="stuid"><span className="text">ID</span></label>
             <br />
             <input type="text" id="stuID" name="stuid" />
             <br />
-            <label for="stupw"><span className="text">Password</span></label>
+            <label htmlFor="stupw"><span className="text">Password</span></label>
             <br />
             <input type="text" id="stuPW" name="stupw" />
         </form>
