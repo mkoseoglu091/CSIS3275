@@ -17,7 +17,7 @@ function MainPage() {
             <Link to={"/taskList"}><button class="mainButn">TASK LIST</button></Link>
             <Link to={"/wardrobe"}><button class="mainButn">WARDROBE</button></Link>
             <Link to={"/setting"}><button class="mainButn">SETTINGS</button></Link>
-            <Link to={"/game"}><button class="mainButn">PLAY</button></Link>
+            <a href="/questions.html"><button class="mainButn">PLAY</button></a>
             <Link to={"/"}><button class="mainButn">LOGOUT</button></Link>
         </div>
     
