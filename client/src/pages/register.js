@@ -4,10 +4,11 @@ import '../design/register.css';
 import BackArrow from "../resources/backArrow.png";
 import { connect } from 'react-redux';
 import { setAlert } from '../actions/alert';
+import { register } from '../actions/auth';
 import PropTypes from 'prop-types'
 import axios from 'axios';
 
-const RegisterPage = ({ setAlert }) => {
+const RegisterPage = ({ setAlert, register }) => {
 
     const [formData, setFormData] = useState({
       studentID: '',
@@ -27,9 +28,14 @@ const RegisterPage = ({ setAlert }) => {
       if(password !== password2) {
         setAlert('Passwords do not match', 'danger');
       } else {
-        console.log('Success');
-        }
-  }
+        register({
+          studentID,
+          email,
+          name,
+          password
+        });
+      }
+  };
 
     // how to do it with axios. This works for sure
     /*
@@ -77,23 +83,23 @@ const RegisterPage = ({ setAlert }) => {
     <form id="registerForm" className="form" onSubmit={e => onSubmit(e)}>
         <label htmlFor="stuid"><span className="text">ID</span></label>
         <br />
-        <input type="text" id="stuID" name="studentID" defaultValue={studentID} onChange={e => onChange(e)} required />
+        <input type="text" id="stuID" name="studentID" defaultValue={studentID} onChange={e => onChange(e)} />
         <br />
         <label htmlFor="stuemail"><span className="text">Email</span></label>
         <br />
-        <input type="email" id="stuEmail" name="email" defaultValue={email} onChange={e => onChange(e)} required/>
+        <input type="email" id="stuEmail" name="email" defaultValue={email} onChange={e => onChange(e)} />
         <br />
         <label htmlFor="stuname"><span className="text">Name</span></label>
         <br />
-        <input type="text" id="stuName" name="name" defaultValue={name} onChange={e => onChange(e)} required />
+        <input type="text" id="stuName" name="name" defaultValue={name} onChange={e => onChange(e)} />
         <br />
         <label htmlFor="stupw"><span className="text">Password</span></label>
         <br />
-        <input type="password" id="stuPW" name="password" defaultValue={password} onChange={e => onChange(e)} required/>
+        <input type="password" id="stuPW" name="password" defaultValue={password} onChange={e => onChange(e)} />
         <br />
         <label htmlFor="stupwc" id="pwconfirm"><span className="text">Password Confirm</span></label>
         <br />
-        <input type="password" id="stuPWC" name="password2" defaultValue={password2} onChange={e => onChange(e)} required/>
+        <input type="password" id="stuPWC" name="password2" defaultValue={password2} onChange={e => onChange(e)} />
         <button type="submit" className="btn btn-primary" id="registerButn">REGISTER</button>
     </form>
 
@@ -103,7 +109,8 @@ const RegisterPage = ({ setAlert }) => {
   };
 
   RegisterPage.propTypes = {
-    setAlert: PropTypes.func.isRequired
+    setAlert: PropTypes.func.isRequired,
+    register: PropTypes.func.isRequired
   };
   
-  export default connect(null, { setAlert })(RegisterPage);
+  export default connect(null, { setAlert, register })(RegisterPage);
