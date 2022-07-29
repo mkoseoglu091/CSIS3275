@@ -1,0 +1,42 @@
+/* common settings */
+body {
+  background-image: url("./resources/bgImage.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+@font-face {
+  font-family: 'pixel';
+  src: URL('./resources/pixel.ttf') format('truetype');
+}
+* {
+  font-family: 'pixel';
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.text {
+  color: white;
+  background-color: black;
+  padding: 0.4vh 2.7vw;
+}
+#backArrow {
+  position: absolute;
+  top: 6vh;
+  left: 1vw;
+  height: 16vw;
+}
+#backArrow_none {
+  position: absolute;
+  top: 1.5vh;
+  height: 15vw;
+  right: 1vw;
+  visibility: hidden;
+}
+button {
+  padding: 1.7vh 4vw;
+  border-radius: 1px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  background-color: rgb(17, 103, 188);
+  box-shadow: 0.4vh 0.4vh 0vh 0.4vh grey;
+}
