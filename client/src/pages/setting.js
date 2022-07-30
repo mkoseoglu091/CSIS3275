@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { changePassword } from '../actions/auth';
 import { setAlert } from '../actions/alert';
 
-function SettingPage({ auth: { isAuthenticated, loading }, changePassword }) {
+function SettingPage({ auth: { isAuthenticated, loading }, changePassword, setAlert }) {
 
   const [formData, setFormData] = useState({
     password: '',
@@ -26,6 +26,7 @@ const onSubmit = async e => {
       changePassword({
         password
       });
+      setAlert('Password changed', 'success');
     }
 };
 
@@ -44,7 +45,7 @@ const onSubmit = async e => {
         <label htmlFor="confpwd"><span className="text">confirm password</span></label>
         <br />
         <input type="password" id="confpwd" name="password2" defaultValue={password2} onChange={e => onChange(e)}/>
-        <Link to="/main"><button type="submit" id="settingbtn1" className="btn btn-primary">change password</button></Link>
+        <button type="submit" id="settingbtn1" className="btn btn-primary">change password</button>
 
     </form>
 
@@ -67,6 +68,7 @@ const guestPage = (
 
   SettingPage.prototypes = {
     logout: PropTypes.func.isRequired,
+    setAlert: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
   };
 
@@ -74,5 +76,5 @@ const guestPage = (
     auth: state.auth
   });
   
-  export default connect(mapStateToProps, { changePassword })(SettingPage);
+  export default connect(mapStateToProps, { changePassword, setAlert })(SettingPage);
   

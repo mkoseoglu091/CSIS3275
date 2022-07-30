@@ -53,3 +53,8 @@ button {
   background-color: red;
   color: #000;
 }
+.alert-success {
+  margin: 0.5rem 0;
+  background-color: rgb(38, 221, 38);
+  color: #000;
+}
