@@ -2,22 +2,20 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import '../design/main.css';
 import MascotImage from "../resources/roary.png";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logout } from '../actions/auth';
 
-function MainPage() {
-    return (
+function MainPage({ auth: { isAuthenticated, loading }, logout }) {
+    const authLinks = (
       <Fragment>
-        <div id="grid">
-        <p id="mainTitle">
-            <span className="text">DOUGLAS COLLEGE</span>
-        </p>
-
         <img id="mascot" src={MascotImage} alt="roary" />
 
         <div id="mainButton">
             <Link to={"/taskList"}><button className="mainButn">TASK LIST</button></Link>
             <Link to={"/wardrobe"}><button className="mainButn">WARDROBE</button></Link>
             <Link to={"/setting"}><button className="mainButn">SETTINGS</button></Link>
-            <Link to={"/"}><button className="mainButn">LOGOUT</button></Link>
+            <Link to={"/"}><button className="mainButn" onClick={logout}>LOGOUT</button></Link>
         </div>
     
         <div id="mascotName">
@@ -25,10 +23,35 @@ function MainPage() {
             <p id="nameLabel">MASCOT NAME :</p>
             <p id="Name">ROARY</p>
         </div>
-      </div>
+      </Fragment>
+    );
+
+    const guestLinks = (
+      <div></div>
+    );
+
+    return (
+      <Fragment>
+        <div id="grid">
+        <p id="mainTitle">
+            <span className="text">DOUGLAS COLLEGE</span>
+        </p>
+        {/* check if user is authenticated if so show the main page otherwise hide it */}
+        { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks}</Fragment>)}
+        
+        </div>
     </Fragment>
     );
   }
+
+  MainPage.prototypes = {
+    logout: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+  };
+
+  const mapStateToProps = state => ({
+    auth: state.auth
+  });
   
-  export default MainPage;
+  export default connect(mapStateToProps, { logout })(MainPage);
   
