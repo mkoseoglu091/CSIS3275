@@ -9,4 +9,10 @@ const router = express.Router();
 // @access  Public
 router.get('/', (req, res) => res.send('Pet Route'));
 
+// TODO: get current pet clothes and available options
+
+
+// TODO: modify current shirt/pants
+
+
 module.exports = router;

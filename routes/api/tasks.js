@@ -148,6 +148,8 @@ router.post('/admin', [auth,
             { new: true }
         );
 
+        // find pet table, look-up if award is shirt or pants, add award to pet
+
         return res.json(modifiedTable);
 
     } catch (err) {
