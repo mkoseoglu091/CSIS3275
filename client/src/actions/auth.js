@@ -42,6 +42,10 @@ export const register = ({ studentID, email, name, password }) => async dispatch
         });
 
         dispatch(loadUser());
+
+        const res2 = await axios.post('/api/tasks');
+        const res3 = await axios.post('/api/pet');
+        
     } catch(err) {
         const errors = err.response.data.errors;
         if(errors) {
