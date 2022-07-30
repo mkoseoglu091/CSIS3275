@@ -67,23 +67,49 @@ router.get('/me', auth, async (req, res) => {
 // @route   POST api/pet/modify
 // @desc    Change the current selected item of pet
 // @access  Private
-router.post('/modify', auth, async (req, res) => {
-    // Build Tasks
-    const pet = {};
-    pet.user = req.user.id; // set the user to be the same user as the owner of the token
-
-    // Make sure a task table hasn't already been created for the user
+router.post('/modify', [auth, 
+    // require shirt or pants, and code of desired
+    check('option', 'option is required. Provide shirt or pants').not().isEmpty(), 
+    check('awardID', 'awardID is required').not().isEmpty()], 
+    async (req, res) => {
+    
+    // get option and awardID from request body
+    const {option, awardID} = req.body;
+    console.log(req.body);
+    
     try {
-        let table = await Pet.findOne({ user: req.user.id });
-        if(table) { // there is already a table for this user
-            return res.status(400).json({ errors: [{ msg: 'Pet already exists' }] });
+        // Find the pet in DB
+        let petOriginal = await Pet.findOne({ user: req.user.id });
+        let pet = petOriginal;
+        if(!pet) { // there is already a table for this user
+            return res.status(400).json({ errors: [{ msg: 'Pet does not exist' }] });
         }
 
-        table = new Pet(pet);
+        // if pet is found make sure awardID exists inside the given option array
+        if (option === 'shirt') {
+            if (pet.petShirtOptions.includes(awardID)) {
+                pet.petShirtSelected = awardID;
+            } else {
+                return res.status(400).json({ errors: [{ msg: 'You do not own this reward' }] });
+            }
+        } else if (option === 'pants') {
+            if (pet.petPantsOptions.includes(awardID)) {
+                pet.petPantsSelected = awardID;
+            } else {
+                return res.status(400).json({ errors: [{ msg: 'You do not own this reward' }] });
+            }
+        } else {
+            return res.status(400).json({ errors: [{ msg: 'An error has occured with the option provided' }] });
+        }
 
-        // Save tasks table and return it as the response
-        await table.save();
-        res.json(table);
+        // Update table and save to DB
+        pet = await Pet.findOneAndUpdate(
+            { user: req.user.id},
+            { $set: pet},
+            { new: true }
+        );
+
+        res.json(pet);
 
     } catch (err) {
         console.error(err.message);
