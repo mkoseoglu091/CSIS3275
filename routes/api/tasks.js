@@ -5,8 +5,10 @@ const router = express.Router();
 const auth = require('../../middleware/auth'); // any request with auth as 2nd param will be private
 const Tasks = require('../../models/Tasks');
 const User = require('../../models/User');
+const Pet = require('../../models/Pet');
 const Admin = require('../../models/Admin');
 const tasksJson = require('../../tasks/tasks.json');
+const awardJson = require('../../tasks/award.json');
 const {check, validationResult} = require('express-validator');
 
 // @route   GET api/tasks/me
@@ -105,8 +107,14 @@ router.post('/admin', [auth,
             return res.status(400).json({ errors: [{ msg: 'Student ID not found' }] });
         }
 
+        let pet = await Pet.find({ studentID: studentID });
+        if(!pet) { // student NOT found
+            return res.status(400).json({ errors: [{ msg: 'No pet to award' }] });
+        }
+
         // Find the task with the given taskID, and update taskComplete with the provided boolean
         let modifiedTable = table[0];
+        let modifiedPet = pet[0];
         let id = modifiedTable.id;
 
         modifiedTable.category.forEach((c) => {
@@ -115,6 +123,17 @@ router.post('/admin', [auth,
                     t.taskComplete = taskComplete;
                     if (taskComplete) { // modified to being true
                         t.taskCompletionDate = Date.now();
+                        
+                        // lookup the awardID and option for the task
+                        var lookUp = awardJson.find(item => item.taskID === taskID);
+                        console.log(lookUp);
+                        // check if award is shirt or pant and add award
+                        if (lookUp.option === 'shirt') {
+                            modifiedPet.petShirtOptions.push(lookUp.awardID);
+                        } else { // if not shirt it has to be pants
+                            modifiedPet.petPantsOptions.push(lookUp.awardID);
+                        }
+                        
                         return;
                     } else {
                         t.taskCompletionDate = null;
@@ -123,6 +142,7 @@ router.post('/admin', [auth,
                 }
             });
         });
+        
 
         // check other tasks in the same category if all are complete mark category as complete and add completion date
         let [categoryID, _] = taskID.split('-'); // extract categoryID
@@ -148,7 +168,11 @@ router.post('/admin', [auth,
             { new: true }
         );
 
-        // find pet table, look-up if award is shirt or pants, add award to pet
+        modifiedPet = await Pet.findOneAndUpdate(
+            { studentID: studentID},
+            { $set: modifiedPet},
+            { new: true }
+        );
 
         return res.json(modifiedTable);
 

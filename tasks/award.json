@@ -1,37 +1,37 @@
 [
     {
         "taskID" : "001-001",
-        "awardType" : "shirt",
+        "option" : "shirt",
         "awardID" : "1"
     },
     {
         "taskID" : "001-002",
-        "awardType" : "pants",
+        "option" : "pants",
         "awardID" : "1"
     },
     {
         "taskID" : "001-003",
-        "awardType" : "shirt",
+        "option" : "shirt",
         "awardID" : "2"
     },
     {
         "taskID" : "002-001",
-        "awardType" : "pants",
+        "option" : "pants",
         "awardID" : "2"
     },
     {
         "taskID" : "002-002",
-        "awardType" : "shirt",
+        "option" : "shirt",
         "awardID" : "3"
     },
     {
         "taskID" : "002-003",
-        "awardType" : "pants",
+        "option" : "pants",
         "awardID" : "3"
     },
     {
         "taskID" : "002-004",
-        "awardType" : "shirt",
+        "option" : "shirt",
         "awardID" : "4"
     }
 ]
