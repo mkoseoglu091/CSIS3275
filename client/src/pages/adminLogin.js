@@ -11,8 +11,8 @@ const  AdminLogin = () => {
 
         <table id="adminTable">
             <tr>
-              <th>account</th>
-              <th>task</th>
+              <th>Student ID</th>
+              <th>Task ID</th>
               <th>image</th>
               <th>approval</th>
             </tr>
