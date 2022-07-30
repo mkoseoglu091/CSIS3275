@@ -99,6 +99,12 @@ router.post('/', [ // this list of checks come from express-validator imported o
 // @desc    DELETE admin, Tasks table and Pet
 // @access  Private
 router.delete('/', auth, async (req,res) => {
+    var numAdmin = await Admin.countDocuments();
+
+    console.log(numAdmin);
+    if(numAdmin == 1) {
+        return res.status(400).json({ errors: [  { msg: 'Cannot delete final admin' }] });
+    }
     try {
         // remove all tables belonging to the admin
         await Admin.findOneAndRemove({ _id: req.user.id });

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from './types';
+import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, PASSWORD_CHANGED, PASSWORD_CHANGE_FAILED } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
 // Load User
@@ -42,6 +42,10 @@ export const register = ({ studentID, email, name, password }) => async dispatch
         });
 
         dispatch(loadUser());
+
+        const res2 = await axios.post('/api/tasks');
+        const res3 = await axios.post('/api/pet');
+
     } catch(err) {
         const errors = err.response.data.errors;
         if(errors) {
@@ -50,6 +54,37 @@ export const register = ({ studentID, email, name, password }) => async dispatch
         
         dispatch({
             type: REGISTER_FAIL
+        });
+    }
+};
+
+// Change Password
+export const changePassword = ({ password }) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    const body = JSON.stringify({ password });
+
+    try {
+        const res = await axios.post('/api/users/password', body, config);
+        dispatch({
+            type: PASSWORD_CHANGED,
+            payload: res.data
+        });
+
+        dispatch(loadUser());
+        
+    } catch(err) {
+        const errors = err.response.data.errors;
+        if(errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        }
+        
+        dispatch({
+            type: PASSWORD_CHANGE_FAILED
         });
     }
 };
