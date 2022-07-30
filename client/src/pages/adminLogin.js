@@ -10,7 +10,7 @@ const  AdminLogin = () => {
         <p id="adminLoginSubt">Admin Login</p>
 
         <form id="adminLoginForm">
-            <label htmlFor="admiID">ID</label>
+            <label htmlFor="admiID">Email</label>
             <input type="text" id="adminID" name="adminID" />
             <br />
             <label htmlFor="adminPW">Password</label>
