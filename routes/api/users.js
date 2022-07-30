@@ -121,7 +121,20 @@ router.post('/password', [auth, // this list of checks come from express-validat
                 { new: true }
             );
 
-            res.json({msg : "password changed"});
+            const payload = {
+                user: {
+                    id: modifiedUser.id // this is the automatically generated ID number in MongoDB
+                }
+            }
+
+            jwt.sign(
+                payload, 
+                config.get('jwtSecret'),
+                { expiresIn: config.get('expiration') },
+                (err, token) => {
+                    if(err) throw err;
+                    res.json({ token })
+                });
 
         } catch(err) {
             console.error(err.message);

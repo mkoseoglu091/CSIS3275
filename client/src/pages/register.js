@@ -21,7 +21,6 @@ const RegisterPage = ({ setAlert, register, isAuthenticated }) => {
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    // temporary
   const onSubmit = async e => {
     e.preventDefault();
       if(password !== password2) {
@@ -33,8 +32,6 @@ const RegisterPage = ({ setAlert, register, isAuthenticated }) => {
           name,
           password
         });
-        // create task table
-        // create pet table
       }
   };
 
