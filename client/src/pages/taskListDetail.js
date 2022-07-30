@@ -1,11 +1,14 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import '../design/taskListDetail.css';
 import BackArrow from "../resources/backArrow.png";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { setAlert } from '../actions/alert';
 
-function TaskDetailPage() {
-    return (
-      <Fragment>
+function TaskDetailPage({ auth: { isAuthenticated, loading }, setAlert }) {
+  const authPage = (
+    <Fragment>
         <Link to={"/taskList"}><img id="backArrow" src={BackArrow} alt="backArrow" /></Link>
         <img id="backArrow_none" src={BackArrow} alt="backArrow" />
         
@@ -17,8 +20,27 @@ function TaskDetailPage() {
 
         <button id="tldetbtn1">upload</button>
       </Fragment>
+  );
+
+  const guestPage = (
+    <div> <Redirect to="/"></Redirect> </div>
+  );
+
+    return (
+      <Fragment>
+           { !loading && (<Fragment>{ isAuthenticated ? authPage : guestPage}</Fragment>)}
+      </Fragment>
     );
   }
+
+  TaskDetailPage.prototypes = {
+    setAlert: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+  };
+
+  const mapStateToProps = state => ({
+    auth: state.auth
+  });
   
-  export default TaskDetailPage;
+  export default connect(mapStateToProps, { setAlert })(TaskDetailPage);
   
