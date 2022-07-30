@@ -126,7 +126,6 @@ router.post('/admin', [auth,
                         
                         // lookup the awardID and option for the task
                         var lookUp = awardJson.find(item => item.taskID === taskID);
-                        console.log(lookUp);
                         // check if award is shirt or pant and add award
                         if (lookUp.option === 'shirt') {
                             modifiedPet.petShirtOptions.push(lookUp.awardID);
