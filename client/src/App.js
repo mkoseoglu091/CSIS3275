@@ -13,6 +13,7 @@ import TaskDetailPage from './pages/taskListDetail';
 import WardrobePage from './pages/wardrobe';
 import Alert from './pages/Alert';
 import AdminPage from './pages/adminPage';
+import AdminLogin from './pages/adminLogin';
 
 //redux
 import { Provider } from 'react-redux';
@@ -62,8 +63,11 @@ const App = () => {
                     <Route path='/game'>
                         <Redirect push to={"questions.html"} />
                     </Route>
-                    <Route path='/admin'>
+                    <Route path='/adminManage'>
                         <AdminPage />
+                    </Route>
+                    <Route path='/adminLogin'>
+                        <AdminLogin />
                     </Route>
                 </Switch>
             </BrowserRouter>
