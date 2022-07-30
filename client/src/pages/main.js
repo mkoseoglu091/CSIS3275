@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import '../design/main.css';
 import MascotImage from "../resources/roary.png";
 import { connect } from 'react-redux';
@@ -27,7 +27,7 @@ function MainPage({ auth: { isAuthenticated, loading }, logout }) {
     );
 
     const guestLinks = (
-      <div></div>
+      <div> <Redirect to="/"></Redirect> </div>
     );
 
     return (
