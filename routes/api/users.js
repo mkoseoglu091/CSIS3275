@@ -87,6 +87,48 @@ router.post('/', [ // this list of checks come from express-validator imported o
         }
 });
 
+// @route   POST api/users/password
+// @desc    Change Password
+// @access  Private
+router.post('/password', [auth, // this list of checks come from express-validator imported on line 5
+    check('password', 'Please enter a password with 8 or more characters').isLength({ min: 8 })
+    ], 
+    async (req, res) => {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) { // if there are errors
+            return res.status(400).json({ errors: errors.array() }); // 400 - bad request
+        }
+
+        const {password} = req.body;
+
+        try {
+            // See if user exists
+            let userToModify = await User.findOne({ _id: req.user.id });
+            if (!userToModify) { // if no user is found with
+                return res.status(400).json({ errors: [  { msg: 'User not found exists' }] });
+            }
+
+            let modifiedUser = userToModify;
+
+            // Encrypt Password
+            const salt = await bcrypt.genSalt(10); // used to hash the password
+            modifiedUser.password = await bcrypt.hash(password, salt);
+
+            // Save user to database
+            modifiedUser = await User.findOneAndUpdate(
+                { _id: req.user.id},
+                { $set: modifiedUser},
+                { new: true }
+            );
+
+            res.json({msg : "password changed"});
+
+        } catch(err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
+});
+
 // @route   DELETE api/users
 // @desc    DELETE User, Tasks table and Pet
 // @access  Private
@@ -95,7 +137,7 @@ router.delete('/', auth, async (req,res) => {
         // remove all tables belonging to the user
         await User.findOneAndRemove({ _id: req.user.id });
         await Tasks.findOneAndRemove({ user: req.user.id });
-        //@todo remove Pet of user as well!!
+        await Pet.findOneAndRemove({ user: req.user.id });
 
         res.json({ msg: 'User Deleted' });
     } catch (err) {
