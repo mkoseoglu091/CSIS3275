@@ -10,48 +10,21 @@ const PetSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, // gets its ObjectID from the objectID of a user model. Similar to SQL foreign key
         ref: 'user'
     },
-    petName: {
-        type: String,
-        required: true
-    },
-    petHeadOptions: {  // An array of numbers, all will start off with just 0 (default option), more will be added
+    petShirtOptions: { // An array of shirt options
         type: [Number],
         default: [0]
     },
-    petHeadSelected: {
+    petShirtSelected: {
         type: Number,
         default: 0
     },
-    petBodyOptions: { // An array of body options
+    petPantsOptions: { // An array of pants options
         type: [Number],
-        default: [0]
+        default: [0] 
     },
-    petBodySelected: {
+    petPantsSelected: {
         type: Number,
         default: 0
-    },
-    petFaceOptions: { // Facial expressions 0: Neutral, 1: Happy, 2: Angry, 3: Bored, 4: Sad
-        type: [Number],
-        default: [0,1,2,3,4] 
-    },
-    petFaceSelected: {
-        type: Number,
-        default: 1
-    },
-    petBackgroundOptions: { // Backgrounds with 5 initial options to choose from
-        type: [Number],
-        default: [0,1,2,3,4]
-    },
-    petBackgroundSelected: {
-        type: Number,
-        default: 0
-    },
-    petToyOptions: { // Toy for pet to play with
-        type: [Number],
-        default: []
-    },
-    petToySelected: {
-        type: Number
     }
 });
 

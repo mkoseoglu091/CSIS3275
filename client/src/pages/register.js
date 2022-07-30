@@ -33,6 +33,8 @@ const RegisterPage = ({ setAlert, register, isAuthenticated }) => {
           name,
           password
         });
+        // create task table
+        // create pet table
       }
   };
 
