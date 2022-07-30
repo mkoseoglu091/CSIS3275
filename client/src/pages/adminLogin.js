@@ -1,34 +1,23 @@
 import React, { Fragment }from "react";
-import '../design/adminPage.css'
+import '../design/adminLogin.css'
 
 const  AdminLogin = () => {
     return (
       <Fragment>
-        <div id="adminWrapper">
+        <div id="adminLoginWrapper">
 
-        <p id="head">Douglas College Mascots Management Page</p>
-        <p id="second">Task Pending List</p>
+        <p id="adminLoginTitle">Douglas College Mascots Management Page</p>
+        <p id="adminLoginSubt">Admin Login</p>
 
-        <table id="adminTable">
-            <tr>
-              <th>Student ID</th>
-              <th>Task ID</th>
-              <th>image</th>
-              <th>approval</th>
-            </tr>
-            <tr>
-              <td>300xxxyyy</td>
-              <td>borrow book from library</td>
-              <td>xxx.jpeg</td>
-              <td><button className="adminButton">tick</button></td>
-            </tr>
-            <tr>
-              <td>300zzzqqq</td>
-              <td>task2</td>
-              <td>sss.jpeg</td>
-              <td><button className="adminButton">no-tick</button></td>
-            </tr>
-        </table>
+        <form id="adminLoginForm">
+            <label htmlFor="admiID">ID</label>
+            <input type="text" id="adminID" name="adminID" />
+            <br />
+            <label htmlFor="adminPW">Password</label>
+            <input type="password" id="adminPW" name="adminPW" />
+            <br />
+            <button type="submit" className="btn btn-primary" id="adminLoginButn">LOGIN</button>
+        </form>
         </div>
        
       </Fragment>
