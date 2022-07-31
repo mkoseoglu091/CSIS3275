@@ -14,12 +14,19 @@ function TaskDetailPage() {
   const taskDesc = location.state?.taskDesc;
   const taskComplete = location.state?.taskComplete;
 
+  if (taskComplete) {
+    var completeText = "COMPLETE";
+  } else{
+    var completeText = "NOT COMPLETE";
+  }
+
     return (
       <Fragment>
         <Link to={"/taskList"}><img id="backArrow" src={BackArrow} alt="backArrow" /></Link>
         <img id="backArrow_none" src={BackArrow} alt="backArrow" />
         
         <p id="tldetheader"><span className="text">{taskName}</span></p>
+        <p id="tldetheader"><span className="text">{completeText}</span></p>
         <p id="dettable">
           {taskDesc}
         </p>

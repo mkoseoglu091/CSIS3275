@@ -33,7 +33,7 @@ function TaskListPage({ auth, setAlert, getUserTasks, tasks: {tasks, loading} })
    
           <p id="tlheader"><span className="text">task list</span></p>
           { tasksArray.map(task => (
-            <TaskCard task={task}/>
+            <TaskCard task={task} key={task.taskID}/>
           )) }
   
         </Fragment>}

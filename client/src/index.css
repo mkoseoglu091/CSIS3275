@@ -59,3 +59,7 @@ button {
   background-color: rgb(38, 221, 38);
   color: #000;
 }
+
+#completedTask {
+  background-color: rgb(69, 182, 69);
+}
