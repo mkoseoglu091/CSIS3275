@@ -14,8 +14,14 @@ function TaskListPage({ auth, setAlert, getUserTasks, tasks: {tasks, loading} })
     getUserTasks();
   }, []);
 
-
-  console.log("current Task is: " + tasks.category[0].tasks[0].taskName);
+  // this array has details of all tasks
+  var tasksArray = [];
+  tasks.category.map(cat => {
+    cat.tasks.map(t => {
+      tasksArray.push(t);
+      console.log(t);
+    })
+  })
 
     return (
       <Fragment>
@@ -25,7 +31,7 @@ function TaskListPage({ auth, setAlert, getUserTasks, tasks: {tasks, loading} })
           <img id="backArrow_none" src={BackArrow} alt="backArrow" />
    
           <p id="tlheader"><span className="text">task list</span></p>
-  
+
           <Link to={"/taskListDetail"}><button className="taskListBtn">borrow book from library</button></Link>
           <Link to={"/taskListDetail"}><button className="taskListBtn">book a discussion room</button></Link>
           <Link to={"/taskListDetail"}><button className="taskListBtn">buy a coffee at cafeteria</button></Link>
