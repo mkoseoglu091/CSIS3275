@@ -102,20 +102,24 @@ router.post('/admin', [auth,
     const {studentID, taskID, taskComplete} = req.body;
 
     try {
-        let table = await Tasks.find({ studentID: studentID });
+        let user = await User.findOne({ "studentID" : studentID });
+        
+        let table = await Tasks.findOne({ user: user.id });
+        
+        
         if(!table) { // student NOT found
             return res.status(400).json({ errors: [{ msg: 'Student ID not found' }] });
         }
 
-        let pet = await Pet.find({ studentID: studentID });
+        let pet = await Pet.findOne({ user: user.id });
+        
         if(!pet) { // student NOT found
             return res.status(400).json({ errors: [{ msg: 'No pet to award' }] });
         }
 
         // Find the task with the given taskID, and update taskComplete with the provided boolean
-        let modifiedTable = table[0];
-        let modifiedPet = pet[0];
-        let id = modifiedTable.id;
+        let modifiedTable = table;
+        let modifiedPet = pet;
 
         modifiedTable.category.forEach((c) => {
             c.tasks.forEach((t) => {
@@ -133,10 +137,10 @@ router.post('/admin', [auth,
                             modifiedPet.petPantsOptions.push(lookUp.awardID);
                         }
                         
-                        return;
+                        
                     } else {
                         t.taskCompletionDate = null;
-                        return;
+                        
                     }
                 }
             });
@@ -151,24 +155,24 @@ router.post('/admin', [auth,
                 if(c.tasks.every((t) => t.taskComplete === true)) { // if every taskComplete in t is true
                     c.categoryComplete = true;
                     c.categoryCompletionDate = Date.now();
-                    return;
+                    
                 } else {
                     c.categoryComplete = false;
                     c.categoryCompletionDate = null;
-                    return;
+                    
                 }
             }
         });
 
         // Update table and save to DB
         modifiedTable = await Tasks.findOneAndUpdate(
-            { studentID: studentID},
+            { user: user.id},
             { $set: modifiedTable},
             { new: true }
         );
 
         modifiedPet = await Pet.findOneAndUpdate(
-            { studentID: studentID},
+            { user: user.id},
             { $set: modifiedPet},
             { new: true }
         );
