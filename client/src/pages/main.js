@@ -37,7 +37,7 @@ function MainPage({ auth, logout, getUserPet, getUserTasks, pet : { pet, loading
             <p id="nameLabel">MASCOT NAME :</p>
             <p id="Name">ROARY</p>
         </div>
-          <p>{pet.petShirtSelected}</p> {/*This was causing issues before but now seems to work*/}
+          <p>{/*pet.petShirtSelected*/}</p> {/*This was causing issues before but now seems to work. If it end up failing remove the spinner*/}
         </div>
     </Fragment>
       )}
