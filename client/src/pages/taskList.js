@@ -31,10 +31,9 @@ function TaskListPage({ auth, setAlert, getUserTasks, tasks: {tasks, loading} })
           <img id="backArrow_none" src={BackArrow} alt="backArrow" />
    
           <p id="tlheader"><span className="text">task list</span></p>
-
-          <Link to={"/taskListDetail"}><button className="taskListBtn">borrow book from library</button></Link>
-          <Link to={"/taskListDetail"}><button className="taskListBtn">book a discussion room</button></Link>
-          <Link to={"/taskListDetail"}><button className="taskListBtn">buy a coffee at cafeteria</button></Link>
+          { tasksArray.map(task => (
+            <Link to={"/taskListDetail"}><button className="taskListBtn">{task.taskName}</button></Link>
+          )) }
   
         </Fragment>}
       

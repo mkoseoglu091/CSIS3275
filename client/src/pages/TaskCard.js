@@ -1,0 +1,1 @@
+// this might be useful to transfer task details as a prop to the next component
