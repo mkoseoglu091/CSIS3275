@@ -6,17 +6,18 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setAlert } from '../actions/alert';
 import { getUserTasks } from '../actions/tasks';
+import Spinner from './spinner';
 
-function TaskListPage({ auth: { isAuthenticated, loading }, setAlert, getUserTasks, tasks }) {
+function TaskListPage({ auth, setAlert, getUserTasks, tasks: {tasks, loading} }) {
 
   useEffect(() => {
     getUserTasks();
   }, []);
 
-  
+
   //console.log("current Task is: " + tasks.tasks.category[0].tasks[0].taskName);
 
-    return (
+    return loading && tasks === null ? ( <Spinner /> ) : (
       <Fragment>
       <Link to={"/main"}><img id="backArrow" src={BackArrow} alt="backArrow" /></Link>
       <img id="backArrow_none" src={BackArrow} alt="backArrow" />
@@ -28,7 +29,6 @@ function TaskListPage({ auth: { isAuthenticated, loading }, setAlert, getUserTas
       <Link to={"/taskListDetail"}><button className="taskListBtn">buy a coffee at cafeteria</button></Link>
   
       
-  
      {/*this part may be shown with js after connecting to db */}
     </Fragment>
     );
