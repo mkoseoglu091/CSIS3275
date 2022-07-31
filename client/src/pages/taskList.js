@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { setAlert } from '../actions/alert';
 import { getUserTasks } from '../actions/tasks';
 import Spinner from './spinner';
+import TaskCard from './TaskCard';
 
 function TaskListPage({ auth, setAlert, getUserTasks, tasks: {tasks, loading} }) {
 
@@ -32,7 +33,7 @@ function TaskListPage({ auth, setAlert, getUserTasks, tasks: {tasks, loading} })
    
           <p id="tlheader"><span className="text">task list</span></p>
           { tasksArray.map(task => (
-            <Link to={"/taskListDetail"}><button className="taskListBtn">{task.taskName}</button></Link>
+            < TaskCard task={task}/>
           )) }
   
         </Fragment>}
