@@ -7,7 +7,8 @@ import { Link, Redirect } from "react-router-dom";
 const TaskCard = ({ task: { taskName, taskID, taskDesc, taskComplete } }) => {
   return (
     <div className="taskCard">
-        <Link to={"/taskListDetail"}><button className="taskListBtn">{taskName}</button></Link>
+        <Link to={{pathname:"/taskListDetail", state: {taskName, taskID, taskDesc, taskComplete} }}><button className="taskListBtn">{taskName}</button></Link>
+        
     </div>
     
   )
