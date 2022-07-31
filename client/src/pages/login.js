@@ -16,7 +16,6 @@ const LoginPage = ({ login, isAuthenticated }) => {
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  // temporary
   const onSubmit = async e => {
     e.preventDefault();
     login(studentID, password);
