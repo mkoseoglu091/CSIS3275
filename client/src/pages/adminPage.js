@@ -1,11 +1,28 @@
-import React, { Fragment }from "react";
+import React, { Fragment, useState }from "react";
 import { Link, Redirect } from "react-router-dom";
 import '../design/adminPage.css'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logoutAdmin } from '../actions/auth';
+import { completeTask } from '../actions/tasks'
 
-const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin }) => {
+const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin, completeTask }) => {
+
+  const [formData, setFormData] = useState({
+    studentID: '',
+    taskID: '',
+    taskComplete: 'true'
+  });
+
+  const { studentID, taskID, taskComplete } = formData;
+
+  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = async e => {
+    e.preventDefault();
+    console.log(studentID + " " + taskID + " " + taskComplete);
+    completeTask({studentID, taskID, taskComplete});
+  }
 
     return (
       <Fragment>
@@ -14,6 +31,7 @@ const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin 
         <p id="head">Douglas College Mascots Management Page</p>
         <p id="second">Task Pending List</p>
 
+        <form id="taskCompleteForm" className="form" onSubmit={e => onSubmit(e)}>
         <table id="adminTable">
           <tbody>
             <tr>
@@ -24,21 +42,22 @@ const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin 
             </tr>
             <tr>
               <td>
-                <input type="text" />
+                <input type="text" id="studentID" name="studentID" value={studentID} onChange={e => onChange(e)}/>
               </td>
               <td>
-                <input type="text" />
+                <input type="text" id="taskID" name="taskID" value={taskID} onChange={e => onChange(e)}/>
               </td>
               <td>
-                <select>
+                <select id="taskComplete" name="taskComplete" value={taskComplete} onChange={e => onChange(e)}>
                   <option>true</option>
                   <option>false</option>
                 </select>
               </td>
-              <td><button className="adminButton">submit</button></td>
+              <td><button type="submit" className="adminButton" id="adminButton">submit</button></td>
             </tr>
             </tbody>
         </table>
+        </form>
 
         <table id="taskAppendix">
           <tbody>
@@ -82,12 +101,13 @@ const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin 
 
   AdminPage.prototypes = {
     logoutAdmin: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    completeTask: PropTypes.func.isRequired
   };
 
   const mapStateToProps = state => ({
     auth: state.auth
   });
   
-  export default connect(mapStateToProps, { logoutAdmin })(AdminPage);
+  export default connect(mapStateToProps, { logoutAdmin, completeTask })(AdminPage);
   
