@@ -4,9 +4,9 @@ import '../design/wardrobe.css';
 import BackArrow from "../resources/backArrow.png";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setAlert } from '../actions/alert';
+import { updatePet } from '../actions/pet';
 
-function WardrobePage({ auth: { isAuthenticated, loading }, setAlert }) {
+function WardrobePage({ pet, updatePet }) {
 
 
     return (
@@ -29,13 +29,13 @@ function WardrobePage({ auth: { isAuthenticated, loading }, setAlert }) {
   }
 
   WardrobePage.prototypes = {
-    setAlert: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    pet: PropTypes.object.isRequired,
+    updatePet: PropTypes.func.isRequired
   };
 
   const mapStateToProps = state => ({
-    auth: state.auth
+    pet: state.pet,
   });
   
-  export default connect(mapStateToProps, { setAlert })(WardrobePage);
+  export default connect(mapStateToProps, { updatePet })(WardrobePage);
   
