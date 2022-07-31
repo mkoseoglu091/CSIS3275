@@ -6,8 +6,17 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updatePet } from '../actions/pet';
 
-function WardrobePage({ pet, updatePet }) {
+function WardrobePage({ pet: {pet}, updatePet }) {
 
+  // get options and format them to match images in resources
+  var shirtsArray = [];
+  var pantsArray = [];
+  pet.petShirtOptions.forEach(shirt => shirtsArray.push(`s${shirt}`));
+  pet.petPantsOptions.forEach(pants => pantsArray.push(`p${pants}`));
+  var sArray = [...new Set(shirtsArray)];
+  var pArray = [...new Set(pantsArray)];
+  console.log(sArray);
+  console.log(pArray);
 
     return (
       <Fragment>
@@ -18,8 +27,9 @@ function WardrobePage({ pet, updatePet }) {
 
         <div id="bgTable">
             <div id="wardrobeTable">
-                <img className="wardrobeItem" src={require("../resources/Pants.png")} alt="cloth" />
-                <img className="wardrobeItem" src={require("../resources/Shirt.png")} alt="cloth" />
+                {sArray.map((s) => <img className="wardrobeItem" src={require(`../resources/${s}.png`)} alt="cloth" />)}
+                {pArray.map((p) => <img className="wardrobeItem" src={require(`../resources/${p}.png`)} alt="cloth" />)}
+
             </div>
         </div>
 
