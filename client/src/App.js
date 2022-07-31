@@ -15,6 +15,7 @@ import Alert from './pages/Alert';
 import AdminPage from './pages/adminPage';
 import AdminLogin from './pages/adminLogin';
 import PrivateRoute from './pages/PrivateRoute';
+import PrivateAdminRoute from './pages/PrivateAdminRoute';
 
 //redux
 import { Provider } from 'react-redux';
@@ -54,9 +55,7 @@ const App = () => {
                     <Route path='/game'>
                         <Redirect push to={"questions.html"} />
                     </Route>
-                    <Route path='/adminManage'>
-                        <AdminPage />
-                    </Route>
+                    <PrivateAdminRoute path='/adminManage' component={AdminPage} />
                     <Route path='/adminLogin'>
                         <AdminLogin />
                     </Route>
