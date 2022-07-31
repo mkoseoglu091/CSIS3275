@@ -30,7 +30,10 @@ const onSubmit = async e => {
     }
 };
 
-  const authPage = (<Fragment>
+  
+  return (
+      
+    <Fragment>
     <Link to={"/main"}><img id="backArrow" src={BackArrow} alt="backArrow" /></Link>
     <img id="backArrow_none" src={BackArrow} alt="backArrow" />
 
@@ -51,17 +54,7 @@ const onSubmit = async e => {
 
 
     <Link to={"/contactAdmin"}><button id="settingbtn2">contact admin</button></Link>
-  </Fragment>);
-
-const guestPage = (
-  <div> <Redirect to="/"></Redirect> </div>
-);
-  
-  return (
-      
-      <Fragment>
-         { !loading && (<Fragment>{ isAuthenticated ? authPage : guestPage}</Fragment>)}
-      </Fragment>
+  </Fragment>
       
     );
   }

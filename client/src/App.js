@@ -14,6 +14,7 @@ import WardrobePage from './pages/wardrobe';
 import Alert from './pages/Alert';
 import AdminPage from './pages/adminPage';
 import AdminLogin from './pages/adminLogin';
+import PrivateRoute from './pages/PrivateRoute';
 
 //redux
 import { Provider } from 'react-redux';
@@ -42,24 +43,14 @@ const App = () => {
                     <Route path='/contactAdmin'>
                         <ContactAdminPage />
                     </Route>
-                    <Route path='/main'>
-                        <MainPage />
-                    </Route>
                     <Route path='/register'>
                         <RegisterPage />
                     </Route>
-                    <Route path='/setting'>
-                        <SettingPage />
-                    </Route>
-                    <Route path='/taskList'>
-                        <TaskListPage />
-                    </Route>
-                    <Route path='/taskListDetail'>
-                        <TaskDetailPage />
-                    </Route>
-                    <Route path='/wardrobe'>
-                        <WardrobePage />
-                    </Route>
+                    <PrivateRoute path='/main' component={MainPage} />
+                    <PrivateRoute path='/setting' component={SettingPage} />
+                    <PrivateRoute path='/taskList' component={TaskListPage} />
+                    <PrivateRoute path='/taskListDetail' component={TaskDetailPage} />
+                    <PrivateRoute path='/wardrobe' component={WardrobePage} />
                     <Route path='/game'>
                         <Redirect push to={"questions.html"} />
                     </Route>

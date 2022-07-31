@@ -7,8 +7,10 @@ import PropTypes from 'prop-types';
 import { setAlert } from '../actions/alert';
 
 function WardrobePage({ auth: { isAuthenticated, loading }, setAlert }) {
-  const authPage = (
-    <Fragment>
+
+
+    return (
+      <Fragment>
         <Link to={"/main"}><img id="backArrow" src={BackArrow} alt="backArrow" /></Link>
         <img id="backArrow_none" src={BackArrow} alt="" />
 
@@ -22,16 +24,6 @@ function WardrobePage({ auth: { isAuthenticated, loading }, setAlert }) {
         </div>
 
         <Link to={"/taskList"}><button id="wardrobeBtn" href="the tasklist page">Want more items?</button></Link>
-      </Fragment>
-  )
-
-  const guestPage = (
-    <div> <Redirect to="/"></Redirect> </div>
-  );
-
-    return (
-      <Fragment>
-           { !loading && (<Fragment>{ isAuthenticated ? authPage : guestPage}</Fragment>)}
       </Fragment>
     );
   }

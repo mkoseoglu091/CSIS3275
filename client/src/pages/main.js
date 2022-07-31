@@ -13,8 +13,12 @@ function MainPage({ auth: { isAuthenticated, loading }, logout, getUserPet, pet 
     getUserPet();
   }, []);
 
-    const authLinks = (
+    return (
       <Fragment>
+        <div id="grid">
+        <p id="mainTitle">
+            <span className="text">DOUGLAS COLLEGE</span>
+        </p>
         <img id="mascot" src={MascotImage} alt="roary" />
 
         <div id="mainButton">
@@ -29,21 +33,6 @@ function MainPage({ auth: { isAuthenticated, loading }, logout, getUserPet, pet 
             <p id="nameLabel">MASCOT NAME :</p>
             <p id="Name">ROARY</p>
         </div>
-      </Fragment>
-    );
-
-    const guestLinks = (
-      <div> <Redirect to="/"></Redirect> </div>
-    );
-
-    return (
-      <Fragment>
-        <div id="grid">
-        <p id="mainTitle">
-            <span className="text">DOUGLAS COLLEGE</span>
-        </p>
-        {/* check if user is authenticated if so show the main page otherwise hide it */}
-        { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks}</Fragment>)}
         
         </div>
     </Fragment>

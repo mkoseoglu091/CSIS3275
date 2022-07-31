@@ -13,28 +13,24 @@ function TaskListPage({ auth: { isAuthenticated, loading }, setAlert, getUserTas
     getUserTasks();
   }, []);
 
-  const authPage = (
-  <Fragment>
-    <Link to={"/main"}><img id="backArrow" src={BackArrow} alt="backArrow" /></Link>
-    <img id="backArrow_none" src={BackArrow} alt="backArrow" />
- 
-    <p id="tlheader"><span className="text">task list</span></p>
-
-    <Link to={"/taskListDetail"}><button className="taskListBtn">borrow book from library</button></Link>
-    <Link to={"/taskListDetail"}><button className="taskListBtn">book a discussion room</button></Link>
-    <Link to={"/taskListDetail"}><button className="taskListBtn">buy a coffee at cafeteria</button></Link>
-
-   {/*this part may be shown with js after connecting to db */}
-  </Fragment>);
-
-const guestPage = (
-  <div> <Redirect to="/"></Redirect> </div>
-);
+  
+  //console.log("current Task is: " + tasks.tasks.category[0].tasks[0].taskName);
 
     return (
-        <Fragment>
-           { !loading && (<Fragment>{ isAuthenticated ? authPage : guestPage}</Fragment>)}
-        </Fragment>
+      <Fragment>
+      <Link to={"/main"}><img id="backArrow" src={BackArrow} alt="backArrow" /></Link>
+      <img id="backArrow_none" src={BackArrow} alt="backArrow" />
+   
+      <p id="tlheader"><span className="text">task list</span></p>
+  
+      <Link to={"/taskListDetail"}><button className="taskListBtn">borrow book from library</button></Link>
+      <Link to={"/taskListDetail"}><button className="taskListBtn">book a discussion room</button></Link>
+      <Link to={"/taskListDetail"}><button className="taskListBtn">buy a coffee at cafeteria</button></Link>
+  
+      
+  
+     {/*this part may be shown with js after connecting to db */}
+    </Fragment>
     );
   }
 

@@ -7,8 +7,9 @@ import PropTypes from 'prop-types';
 import { setAlert } from '../actions/alert';
 
 function TaskDetailPage({ auth: { isAuthenticated, loading }, setAlert }) {
-  const authPage = (
-    <Fragment>
+
+    return (
+      <Fragment>
         <Link to={"/taskList"}><img id="backArrow" src={BackArrow} alt="backArrow" /></Link>
         <img id="backArrow_none" src={BackArrow} alt="backArrow" />
         
@@ -19,16 +20,6 @@ function TaskDetailPage({ auth: { isAuthenticated, loading }, setAlert }) {
         </p>
 
         <button id="tldetbtn1">upload</button>
-      </Fragment>
-  );
-
-  const guestPage = (
-    <div> <Redirect to="/"></Redirect> </div>
-  );
-
-    return (
-      <Fragment>
-           { !loading && (<Fragment>{ isAuthenticated ? authPage : guestPage}</Fragment>)}
       </Fragment>
     );
   }
