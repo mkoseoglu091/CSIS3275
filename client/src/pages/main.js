@@ -6,11 +6,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../actions/auth';
 import { getUserPet } from '../actions/pet';
+import { getUserTasks } from '../actions/tasks';
 
 
-function MainPage({ auth: { isAuthenticated, loading }, logout, getUserPet, pet }) {
+function MainPage({ auth: { isAuthenticated, loading }, logout, getUserPet, getUserTasks, pet, tasks }) {
   useEffect(() => {
     getUserPet();
+    getUserTasks();
   }, []);
 
     return (
@@ -43,13 +45,16 @@ function MainPage({ auth: { isAuthenticated, loading }, logout, getUserPet, pet 
     logout: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     getUserPet: PropTypes.func.isRequired,
-    pet: PropTypes.object.isRequired
+    getUserTasks: PropTypes.func.isRequired,
+    pet: PropTypes.object.isRequired,
+    tasks: PropTypes.object.isRequired
   };
 
   const mapStateToProps = state => ({
     auth: state.auth,
-    pet: state.pet
+    pet: state.pet,
+    tasks: state.tasks
   });
   
-  export default connect(mapStateToProps, { logout, getUserPet })(MainPage);
+  export default connect(mapStateToProps, { logout, getUserPet, getUserTasks })(MainPage);
   
