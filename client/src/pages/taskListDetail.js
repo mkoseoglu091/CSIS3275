@@ -31,7 +31,7 @@ function TaskDetailPage() {
           {taskDesc}
         </p>
 
-        <button id="tldetbtn1">upload</button>
+        {/*<button id="tldetbtn1">upload</button>*/}
       </Fragment>
     );
   }
