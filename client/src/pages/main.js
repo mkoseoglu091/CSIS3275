@@ -7,16 +7,18 @@ import PropTypes from 'prop-types';
 import { logout } from '../actions/auth';
 import { getUserPet } from '../actions/pet';
 import { getUserTasks } from '../actions/tasks';
+import Spinner from './spinner';
 
 
-function MainPage({ auth: { isAuthenticated, loading }, logout, getUserPet, getUserTasks, pet, tasks }) {
+function MainPage({ auth, logout, getUserPet, getUserTasks, pet : { pet, loading }, tasks }) {
   useEffect(() => {
     getUserPet();
     getUserTasks();
   }, []);
 
-    return (
-      <Fragment>
+    return <Fragment>
+      {loading ? <Spinner /> : (
+        <Fragment>
         <div id="grid">
         <p id="mainTitle">
             <span className="text">DOUGLAS COLLEGE</span>
@@ -35,10 +37,11 @@ function MainPage({ auth: { isAuthenticated, loading }, logout, getUserPet, getU
             <p id="nameLabel">MASCOT NAME :</p>
             <p id="Name">ROARY</p>
         </div>
-        
+          <p>{pet.petShirtSelected}</p> {/*This was causing issues before but now seems to work*/}
         </div>
     </Fragment>
-    );
+      )}
+    </Fragment> 
   }
 
   MainPage.prototypes = {
