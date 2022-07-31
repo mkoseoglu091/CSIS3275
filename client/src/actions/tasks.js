@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 
-import { GET_TASKS, TASKS_ERROR } from './types';
+import { GET_TASKS, TASKS_ERROR, COMPLETE_TASK, COMPLETE_TASK_FAIL } from './types';
 
 // Get current user tasks
 export const getUserTasks = () => async dispatch => {
@@ -19,3 +19,32 @@ export const getUserTasks = () => async dispatch => {
         });
     }
 }
+
+// Complete Task NOT TESTED YET
+export const completeTask = ({ studentID, taskID, taskComplete }) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    const body = JSON.stringify({ studentID, taskID, taskComplete });
+
+    try {
+        const res = await axios.post('/api/tasks/admin', body, config);
+        dispatch({
+            type: COMPLETE_TASK,
+            payload: res.data
+        });
+
+    } catch(err) {
+        const errors = err.response.data.errors;
+        if(errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        }
+        
+        dispatch({
+            type: COMPLETE_TASK_FAIL
+        });
+    }
+};

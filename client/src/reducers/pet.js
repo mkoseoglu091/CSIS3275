@@ -1,4 +1,4 @@
-import { GET_PET, PET_ERROR } from "../actions/types";
+import { GET_PET, PET_ERROR, UPDATE_PET, UPDATE_PET_FAIL } from "../actions/types";
 
 const initialState = {
     pet: null,
@@ -11,12 +11,14 @@ export default function(state = initialState, action) {
 
     switch(type) {
         case GET_PET:
+        case UPDATE_PET:
             return {
                 ...state,
                 pet: payload,
                 loading: false
             }
         case PET_ERROR:
+        case UPDATE_PET_FAIL:
             return {
                 ...state,
                 error: payload,

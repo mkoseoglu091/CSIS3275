@@ -18,3 +18,7 @@ export const GET_TASKS = 'GET_TASKS';
 export const TASKS_ERROR = 'TASKS_ERROR';
 export const GET_PET = 'GET_PET';
 export const PET_ERROR = 'PET_ERROR';
+export const COMPLETE_TASK = 'COMPLETE_TASK';
+export const COMPLETE_TASK_FAIL = 'COMPLETE_TASK_FAIL';
+export const UPDATE_PET = 'UPDATE_PET';
+export const UPDATE_PET_FAIL = 'UPDATE_PET_FAIL';
