@@ -50,11 +50,12 @@
 
 .image_parent {
     position: relative;
-    display: flex;
-    width: 100%;
-    margin: auto;
     top: 0;
     left: 0;
+    height: 46.5vh;
+    grid-row: 2/3;
+    grid-column: 1/2;
+    margin: 1.8vh auto 0.5vh auto;
 }
 
 #mascot{
@@ -62,25 +63,23 @@
     top: 0;
     left: 0;
     height: 46.5vh;
-    grid-row: 2/3;
-    grid-column: 1/5;
-    margin: 1.8vh auto 0.5vh auto;
     z-index: 1;
 }
 
 .wardrobeItemShirt {
     position: absolute;
-    height: 10vh;
-    top: 6.8%;
-    left: 0.5%;
+    height: 13.2vh;
+    top: 14.4vh;
+    left: 1.74vh;
     z-index: 2;
+    display: none;
 }
 
 .wardrobeItemPants {
     position: absolute;
-    height: 10vh;
-    top: 10%;
-    left: 0.5%;
+    height: 9vh;
+    top: 26vh;
+    left: 5.5vh;
     z-index: 2;
 }
 
