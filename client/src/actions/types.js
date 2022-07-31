@@ -14,3 +14,7 @@ export const ADMIN_AUTH_ERROR = 'ADMIN_AUTH_ERROR';
 export const ADMIN_LOGIN_SUCCESS = 'ADMIN_LOGIN_SUCCESS';
 export const ADMIN_LOGIN_FAIL = 'ADMIN_LOGIN_FAIL';
 export const ADMIN_LOGOUT = 'ADMIN_LOGOUT';
+export const GET_TASKS = 'GET_TASKS';
+export const TASKS_ERROR = 'TASKS_ERROR';
+export const GET_PET = 'GET_PET';
+export const PET_ERROR = 'PET_ERROR';

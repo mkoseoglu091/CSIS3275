@@ -1,12 +1,17 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import '../design/taskList.css';
 import BackArrow from "../resources/backArrow.png";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setAlert } from '../actions/alert';
+import { getUserTasks } from '../actions/tasks';
 
-function TaskListPage({ auth: { isAuthenticated, loading }, setAlert }) {
+function TaskListPage({ auth: { isAuthenticated, loading }, setAlert, getUserTasks, tasks }) {
+
+  useEffect(() => {
+    getUserTasks();
+  }, []);
 
   const authPage = (
   <Fragment>
@@ -35,12 +40,15 @@ const guestPage = (
 
   TaskListPage.prototypes = {
     setAlert: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    getUserTasks: PropTypes.func.isRequired,
+    tasks: PropTypes.object.isRequired
   };
 
   const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    tasks: state.tasks
   });
   
-  export default connect(mapStateToProps, { setAlert })(TaskListPage);
+  export default connect(mapStateToProps, { setAlert, getUserTasks })(TaskListPage);
   

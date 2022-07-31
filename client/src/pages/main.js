@@ -1,12 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import '../design/main.css';
 import MascotImage from "../resources/roary.png";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../actions/auth';
+import { getUserPet } from '../actions/pet';
 
-function MainPage({ auth: { isAuthenticated, loading }, logout }) {
+
+function MainPage({ auth: { isAuthenticated, loading }, logout, getUserPet, pet }) {
+  useEffect(() => {
+    getUserPet();
+  }, []);
+
     const authLinks = (
       <Fragment>
         <img id="mascot" src={MascotImage} alt="roary" />
@@ -46,12 +52,15 @@ function MainPage({ auth: { isAuthenticated, loading }, logout }) {
 
   MainPage.prototypes = {
     logout: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    getUserPet: PropTypes.func.isRequired,
+    pet: PropTypes.object.isRequired
   };
 
   const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    pet: state.pet
   });
   
-  export default connect(mapStateToProps, { logout })(MainPage);
+  export default connect(mapStateToProps, { logout, getUserPet })(MainPage);
   
