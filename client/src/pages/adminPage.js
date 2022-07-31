@@ -1,8 +1,13 @@
 import React, { Fragment }from "react";
+import { Link, Redirect } from "react-router-dom";
 import '../design/adminPage.css'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logoutAdmin } from '../actions/auth';
 
-const  AdminPage = () => {
-    return (
+const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin }) => {
+  console.log(loadingAdmin);
+    const authPage = (
       <Fragment>
         <div id="adminWrapper">
 
@@ -64,10 +69,33 @@ const  AdminPage = () => {
           </tr>
         </table>
         </div>
+
+        <Link to={"/adminLogin"}><button className="logout" onClick={logoutAdmin}>LOGOUT</button></Link>
        
       </Fragment>
     );
+
+    const guestPage = (
+      <div> <Redirect to="/adminLogin"></Redirect> </div>
+    );
+
+    
+    return (
+      <Fragment>
+        <h1>MEHMET</h1>
+        { !loadingAdmin && (<Fragment>{ isAdminAuthenticated ? authPage : guestPage}</Fragment>)}
+      </Fragment>
+    );
   }
+
+  AdminPage.prototypes = {
+    logoutAdmin: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+  };
+
+  const mapStateToProps = state => ({
+    auth: state.auth
+  });
   
-  export default AdminPage;
+  export default connect(mapStateToProps, { logoutAdmin })(AdminPage);
   

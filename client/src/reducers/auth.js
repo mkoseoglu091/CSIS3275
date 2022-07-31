@@ -1,4 +1,4 @@
-import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, PASSWORD_CHANGED, PASSWORD_CHANGE_FAILED, ADMIN_LOADED, ADMIN_AUTH_ERROR, ADMIN_LOGIN_SUCCESS, ADMIN_LOGIN_FAIL } from "../actions/types";
+import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, PASSWORD_CHANGED, PASSWORD_CHANGE_FAILED, ADMIN_LOADED, ADMIN_AUTH_ERROR, ADMIN_LOGIN_SUCCESS, ADMIN_LOGIN_FAIL, ADMIN_LOGOUT } from "../actions/types";
 
 const initialState = {
     token: localStorage.getItem('token'),
@@ -64,6 +64,7 @@ export default function(state = initialState, action) {
                 }
         case ADMIN_AUTH_ERROR:
         case ADMIN_LOGIN_FAIL:
+        case ADMIN_LOGOUT:
             localStorage.removeItem('token');
             return {
                 ...state,
