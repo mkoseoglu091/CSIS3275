@@ -48,11 +48,40 @@
     margin-right: 5vw;
 }
 
+.image_parent {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: auto;
+    top: 0;
+    left: 0;
+}
+
 #mascot{
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 46.5vh;
     grid-row: 2/3;
     grid-column: 1/5;
     margin: 1.8vh auto 0.5vh auto;
+    z-index: 1;
+}
+
+.wardrobeItemShirt {
+    position: absolute;
+    height: 10vh;
+    top: 6.8%;
+    left: 0.5%;
+    z-index: 2;
+}
+
+.wardrobeItemPants {
+    position: absolute;
+    height: 10vh;
+    top: 10%;
+    left: 0.5%;
+    z-index: 2;
 }
 
 #nameLabel{
