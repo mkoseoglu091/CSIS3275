@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import { logoutAdmin } from '../actions/auth';
 
 const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin }) => {
-  console.log(loadingAdmin);
-    const authPage = (
+
+    return (
       <Fragment>
         <div id="adminWrapper">
 
@@ -15,6 +15,7 @@ const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin 
         <p id="second">Task Pending List</p>
 
         <table id="adminTable">
+          <tbody>
             <tr>
               <th>Student ID</th>
               <th>Task ID</th>
@@ -36,9 +37,11 @@ const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin 
               </td>
               <td><button className="adminButton">submit</button></td>
             </tr>
+            </tbody>
         </table>
 
         <table id="taskAppendix">
+          <tbody>
           <tr>
             <th>Task ID</th>
             <th>Task Name</th>
@@ -67,23 +70,12 @@ const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin 
             <td>002-004</td>
             <td>Learn how to enrol waitlist</td>
           </tr>
+          </tbody>
         </table>
         </div>
 
         <Link to={"/adminLogin"}><button className="logout" onClick={logoutAdmin}>LOGOUT</button></Link>
        
-      </Fragment>
-    );
-
-    const guestPage = (
-      <div> <Redirect to="/adminLogin"></Redirect> </div>
-    );
-
-    
-    return (
-      <Fragment>
-        <h1>MEHMET</h1>
-        { !loadingAdmin && (<Fragment>{ isAdminAuthenticated ? authPage : guestPage}</Fragment>)}
       </Fragment>
     );
   }

@@ -3,6 +3,7 @@ body {
   background-image: url("./resources/bgImage.jpg");
   background-repeat: no-repeat;
   background-size: 100vw 100vh;
+  background-attachment: fixed;
 }
 @font-face {
   font-family: 'pixel';
@@ -57,4 +58,8 @@ button {
   margin: 0.5rem 0;
   background-color: rgb(38, 221, 38);
   color: #000;
+}
+
+#completedTask {
+  background-color: rgb(69, 182, 69);
 }

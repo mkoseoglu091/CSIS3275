@@ -1,14 +1,28 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import '../design/main.css';
 import MascotImage from "../resources/roary.png";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../actions/auth';
+import { getUserPet } from '../actions/pet';
+import { getUserTasks } from '../actions/tasks';
+import Spinner from './spinner';
 
-function MainPage({ auth: { isAuthenticated, loading }, logout }) {
-    const authLinks = (
-      <Fragment>
+
+function MainPage({ auth, logout, getUserPet, getUserTasks, pet : { pet, loading }, tasks }) {
+  useEffect(() => {
+    getUserPet();
+    getUserTasks();
+  }, []);
+
+    return <Fragment>
+      {loading ? <Spinner /> : (
+        <Fragment>
+        <div id="grid">
+        <p id="mainTitle">
+            <span className="text">DOUGLAS COLLEGE</span>
+        </p>
         <img id="mascot" src={MascotImage} alt="roary" />
 
         <div id="mainButton">
@@ -23,35 +37,27 @@ function MainPage({ auth: { isAuthenticated, loading }, logout }) {
             <p id="nameLabel">MASCOT NAME :</p>
             <p id="Name">ROARY</p>
         </div>
-      </Fragment>
-    );
-
-    const guestLinks = (
-      <div> <Redirect to="/"></Redirect> </div>
-    );
-
-    return (
-      <Fragment>
-        <div id="grid">
-        <p id="mainTitle">
-            <span className="text">DOUGLAS COLLEGE</span>
-        </p>
-        {/* check if user is authenticated if so show the main page otherwise hide it */}
-        { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks}</Fragment>)}
-        
+          <p>{/*pet.petShirtSelected*/}</p> {/*This was causing issues before but now seems to work. If it end up failing remove the spinner*/}
         </div>
     </Fragment>
-    );
+      )}
+    </Fragment> 
   }
 
   MainPage.prototypes = {
     logout: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    getUserPet: PropTypes.func.isRequired,
+    getUserTasks: PropTypes.func.isRequired,
+    pet: PropTypes.object.isRequired,
+    tasks: PropTypes.object.isRequired
   };
 
   const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    pet: state.pet,
+    tasks: state.tasks
   });
   
-  export default connect(mapStateToProps, { logout })(MainPage);
+  export default connect(mapStateToProps, { logout, getUserPet, getUserTasks })(MainPage);
   
