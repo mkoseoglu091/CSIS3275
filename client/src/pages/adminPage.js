@@ -68,6 +68,10 @@ const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin,
             <th>Task Name</th>
           </tr>
           <tr>
+            <td>001-001</td>
+            <td>Search for a book</td>
+          </tr>
+          <tr>
             <td>001-002</td>
             <td>Check out a book</td>
           </tr>
