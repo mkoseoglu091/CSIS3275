@@ -48,13 +48,14 @@
     margin-right: 5vw;
 }
 
-.image_parent {
+#image_parent {
     position: relative;
     top: 0;
     left: 0;
+    width: 25.5vh;
     height: 46.5vh;
     grid-row: 2/3;
-    grid-column: 1/2;
+    grid-column: 1/5;
     margin: 1.8vh auto 0.5vh auto;
 }
 
@@ -72,7 +73,6 @@
     top: 14.4vh;
     left: 1.74vh;
     z-index: 2;
-    display: none;
 }
 
 .wardrobeItemPants {
