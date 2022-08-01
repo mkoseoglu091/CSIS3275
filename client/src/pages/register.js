@@ -5,9 +5,10 @@ import BackArrow from "../resources/backArrow.png";
 import { connect } from 'react-redux';
 import { setAlert } from '../actions/alert';
 import { register } from '../actions/auth';
-import PropTypes from 'prop-types'
-
-const RegisterPage = ({ setAlert, register, isAuthenticated }) => {
+import { getUserPet } from '../actions/pet';
+import { getUserTasks } from '../actions/tasks';
+import PropTypes from 'prop-types';
+const RegisterPage = ({ setAlert, register, isAuthenticated, getUserPet, getUserTasks }) => {
 
     const [formData, setFormData] = useState({
       studentID: '',
@@ -32,6 +33,8 @@ const RegisterPage = ({ setAlert, register, isAuthenticated }) => {
           name,
           password
         });
+        getUserPet();
+        getUserTasks();
       }
   };
 
@@ -81,11 +84,13 @@ const RegisterPage = ({ setAlert, register, isAuthenticated }) => {
   RegisterPage.propTypes = {
     setAlert: PropTypes.func.isRequired,
     register: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool
+    isAuthenticated: PropTypes.bool,
+    getUserPet: PropTypes.func.isRequired,
+    getUserTasks: PropTypes.func.isRequired
   };
 
   const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
   });
   
-  export default connect(mapStateToProps, { setAlert, register })(RegisterPage);
+  export default connect(mapStateToProps, { setAlert, register, getUserPet, getUserTasks })(RegisterPage);
