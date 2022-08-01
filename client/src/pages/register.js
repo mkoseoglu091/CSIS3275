@@ -8,7 +8,9 @@ import { register } from '../actions/auth';
 import { getUserPet } from '../actions/pet';
 import { getUserTasks } from '../actions/tasks';
 import PropTypes from 'prop-types';
-const RegisterPage = ({ setAlert, register, isAuthenticated, getUserPet, getUserTasks }) => {
+
+
+const RegisterPage = ({ setAlert, register, isAuthenticated, getUserPet, getUserTasks, pet : {loading} }) => {
 
     const [formData, setFormData] = useState({
       studentID: '',
@@ -38,7 +40,7 @@ const RegisterPage = ({ setAlert, register, isAuthenticated, getUserPet, getUser
       }
   };
 
-  if(isAuthenticated) {
+  if(isAuthenticated && !loading) {
     return <Redirect to="/main" />
   }
 
@@ -86,11 +88,13 @@ const RegisterPage = ({ setAlert, register, isAuthenticated, getUserPet, getUser
     register: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool,
     getUserPet: PropTypes.func.isRequired,
-    getUserTasks: PropTypes.func.isRequired
+    getUserTasks: PropTypes.func.isRequired,
+    pet: PropTypes.object.isRequired
   };
 
   const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    pet: state.pet
   });
   
   export default connect(mapStateToProps, { setAlert, register, getUserPet, getUserTasks })(RegisterPage);
