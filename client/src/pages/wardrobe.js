@@ -15,8 +15,17 @@ function WardrobePage({ pet: {pet}, updatePet }) {
   pet.petPantsOptions.forEach(pants => pantsArray.push(`p${pants}`));
   var sArray = [...new Set(shirtsArray)];
   var pArray = [...new Set(pantsArray)];
-  console.log(sArray);
-  console.log(pArray);
+
+  function onClick (e) {
+    var type = e.charAt(0);
+    var awardID = e.charAt(1);
+    if (type == 's') {
+      var option = "shirt";
+    } else {
+      var option = "pants";
+    }
+    updatePet({ option, awardID });
+  }
 
     return (
       <Fragment>
@@ -27,8 +36,8 @@ function WardrobePage({ pet: {pet}, updatePet }) {
 
         <div id="bgTable">
             <div id="wardrobeTable">
-                {sArray.map((s) => <img className="wardrobeItem" src={require(`../resources/${s}.png`)} alt="cloth" />)}
-                {pArray.map((p) => <img className="wardrobeItem" src={require(`../resources/${p}.png`)} alt="cloth" />)}
+                {sArray.map((s) => <Link to="/main" key={s}><img className="wardrobeItem" src={require(`../resources/${s}.png`)} alt="cloth" onClick={() => onClick(s)} /></Link>)}
+                {pArray.map((p) => <Link to="/main" key={p}><img className="wardrobeItem" src={require(`../resources/${p}.png`)} alt="cloth" onClick={() => onClick(p)} /></Link>)}
 
             </div>
         </div>

@@ -28,7 +28,7 @@ export const updatePet = ({ option, awardID }) => async dispatch => {
         }
     }
 
-    const body = JSON.stringify({ option, awardID });
+    const body = JSON.stringify({ option: option, awardID: awardID });
 
     try {
         const res = await axios.post('/api/pet/modify', body, config);
