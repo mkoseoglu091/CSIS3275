@@ -4,10 +4,28 @@ import '../design/wardrobe.css';
 import BackArrow from "../resources/backArrow.png";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setAlert } from '../actions/alert';
+import { updatePet } from '../actions/pet';
 
-function WardrobePage({ auth: { isAuthenticated, loading }, setAlert }) {
+function WardrobePage({ pet: {pet}, updatePet }) {
 
+  // get options and format them to match images in resources
+  var shirtsArray = [];
+  var pantsArray = [];
+  pet.petShirtOptions.forEach(shirt => shirtsArray.push(`s${shirt}`));
+  pet.petPantsOptions.forEach(pants => pantsArray.push(`p${pants}`));
+  var sArray = [...new Set(shirtsArray)];
+  var pArray = [...new Set(pantsArray)];
+
+  function onClick (e) {
+    var type = e.charAt(0);
+    var awardID = e.charAt(1);
+    if (type == 's') {
+      var option = "shirt";
+    } else {
+      var option = "pants";
+    }
+    updatePet({ option, awardID });
+  }
 
     return (
       <Fragment>
@@ -18,8 +36,9 @@ function WardrobePage({ auth: { isAuthenticated, loading }, setAlert }) {
 
         <div id="bgTable">
             <div id="wardrobeTable">
-                <img className="wardrobeItem" src={require("../resources/Pants.png")} alt="cloth" />
-                <img className="wardrobeItem" src={require("../resources/Shirt.png")} alt="cloth" />
+                {sArray.map((s) => <Link to="/main" key={s}><img className="wardrobeItem" src={require(`../resources/${s}.png`)} alt="cloth" onClick={() => onClick(s)} /></Link>)}
+                {pArray.map((p) => <Link to="/main" key={p}><img className="wardrobeItem" src={require(`../resources/${p}.png`)} alt="cloth" onClick={() => onClick(p)} /></Link>)}
+
             </div>
         </div>
 
@@ -29,13 +48,13 @@ function WardrobePage({ auth: { isAuthenticated, loading }, setAlert }) {
   }
 
   WardrobePage.prototypes = {
-    setAlert: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    pet: PropTypes.object.isRequired,
+    updatePet: PropTypes.func.isRequired
   };
 
   const mapStateToProps = state => ({
-    auth: state.auth
+    pet: state.pet,
   });
   
-  export default connect(mapStateToProps, { setAlert })(WardrobePage);
+  export default connect(mapStateToProps, { updatePet })(WardrobePage);
   

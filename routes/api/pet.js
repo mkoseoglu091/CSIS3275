@@ -75,7 +75,6 @@ router.post('/modify', [auth,
     
     // get option and awardID from request body
     const {option, awardID} = req.body;
-    console.log(req.body);
     
     try {
         // Find the pet in DB
