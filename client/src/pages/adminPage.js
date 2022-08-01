@@ -4,9 +4,10 @@ import '../design/adminPage.css'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logoutAdmin } from '../actions/auth';
-import { completeTask } from '../actions/tasks'
+import { completeTask } from '../actions/tasks';
+import { setAlert } from '../actions/alert';
 
-const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin, completeTask }) => {
+const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin, completeTask, setAlert }) => {
 
   const [formData, setFormData] = useState({
     studentID: '',
@@ -22,6 +23,7 @@ const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin,
     e.preventDefault();
     console.log(studentID + " " + taskID + " " + taskComplete);
     completeTask({studentID, taskID, taskComplete});
+    setAlert('Task Completion Notified To Server', 'success');
   }
 
     return (
@@ -102,12 +104,13 @@ const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin,
   AdminPage.prototypes = {
     logoutAdmin: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    completeTask: PropTypes.func.isRequired
+    completeTask: PropTypes.func.isRequired,
+    setAlert: PropTypes.func.isRequired
   };
 
   const mapStateToProps = state => ({
     auth: state.auth
   });
   
-  export default connect(mapStateToProps, { logoutAdmin, completeTask })(AdminPage);
+  export default connect(mapStateToProps, { logoutAdmin, completeTask, setAlert })(AdminPage);
   
