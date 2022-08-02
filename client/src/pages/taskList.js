@@ -20,7 +20,7 @@ function TaskListPage({ auth, setAlert, getUserTasks, tasks: {tasks, loading} })
   tasks.category.map(cat => {
     cat.tasks.map(t => {
       tasksArray.push(t);
-      console.log(t);
+      //console.log(t);
     })
   })
 

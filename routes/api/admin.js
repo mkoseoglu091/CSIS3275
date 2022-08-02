@@ -101,7 +101,7 @@ router.post('/', [ // this list of checks come from express-validator imported o
 router.delete('/', auth, async (req,res) => {
     var numAdmin = await Admin.countDocuments();
 
-    console.log(numAdmin);
+    //console.log(numAdmin);
     if(numAdmin == 1) {
         return res.status(400).json({ errors: [  { msg: 'Cannot delete final admin' }] });
     }

@@ -21,7 +21,7 @@ const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin,
 
   const onSubmit = async e => {
     e.preventDefault();
-    console.log(studentID + " " + taskID + " " + taskComplete);
+    //console.log(studentID + " " + taskID + " " + taskComplete);
     completeTask({studentID, taskID, taskComplete});
     setAlert('Task Completion Notified To Server', 'success');
   }
