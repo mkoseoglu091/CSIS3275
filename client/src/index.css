@@ -31,12 +31,12 @@ textarea {
   position: absolute;
   top: 6vh;
   left: 1vw;
-  height: 16vw;
+  height: min(16vw, 190px);
 }
 #backArrow_none {
   position: absolute;
   top: 1.5vh;
-  height: 15vw;
+  height: min(15vw, 190px);
   right: 1vw;
   visibility: hidden;
 }
