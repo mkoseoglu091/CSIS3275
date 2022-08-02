@@ -26,7 +26,10 @@ const onSubmit = async e => {
       changePassword({
         password
       });
-      setAlert('Password changed', 'success');
+      if (password !== '' && password.length >= 8){
+        setAlert('Password changed', 'success');
+      }
+      
     }
 };
 
