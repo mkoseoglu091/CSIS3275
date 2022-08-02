@@ -1,35 +1,23 @@
-#backArrow {
-    height: 16vw;
-    float: left;
-    margin-top: -4.5vh;
-}
-
-#backArrow_none {
-    height: 15vw;
-    float: right;
-    margin-top: -4.5vh;
-    visibility: hidden;
-}
-
 #registerTitle {
-    font-size: 9vw;
+    font-size: min(9vw, 80px);
     margin-top: 5.5vh;
     text-align: center;
     margin-left: 0.5vw;
 }
 
 #registerForm {
-    margin: 5vh 11vw 1vh 11vw;
+    width: fit-content;
+    margin: 5vh auto 1vh auto;
 }
 
 #registerForm > label {
-    font-size: 6.7vw;
+    font-size: min(6.7vw, 50px);
 }
 
 #registerForm > input {
-    font-size: 6.5vw;
+    font-size: min(6.5vw, 50px);
     height: fit-content;
-    width: 66vw;
+    width: min(66vw, 700px);
     margin-bottom: 1.7vh;
 }
 
@@ -37,5 +25,5 @@
     display: block;
     margin: 0 auto;
     margin-top: 1.3vh;
-    font-size: 7vw;
+    font-size: min(7vw, 70px);
 }
