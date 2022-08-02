@@ -10,7 +10,7 @@ function ContactAdminPage() {
         <img id="backArrow_none" src={BackArrow} alt="backArrow" />
         
         <p id="contactUs"><span className="text" >Contact Us</span> </p>
-        <textarea id="contactTextBox" name="subject" placeholder="Write something.."></textarea>
+        <textarea id="contactTextBox" name="subject" placeholder="Please write down your review"></textarea>
         <button id="contactAdminButn">submit</button>
 
         {/* need a js here */}
