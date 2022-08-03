@@ -55,7 +55,7 @@ const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin,
                   <option>false</option>
                 </select>
               </td>
-              <td><button type="submit" className="adminButton" id="adminButton">submit</button></td>
+              <td><button type="submit" id="adminButton">submit</button></td>
             </tr>
             </tbody>
         </table>
@@ -99,7 +99,7 @@ const  AdminPage = ({ auth: { isAdminAuthenticated, loadingAdmin }, logoutAdmin,
         </table>
         </div>
 
-        <Link to={"/adminLogin"}><button className="logout" onClick={logoutAdmin}>LOGOUT</button></Link>
+        <Link to={"/adminLogin"}><button id="adminLogout" onClick={logoutAdmin}>LOGOUT</button></Link>
        
       </Fragment>
     );
