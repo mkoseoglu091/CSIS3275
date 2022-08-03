@@ -152,12 +152,10 @@ router.post('/admin', [auth,
                             var indexremoved = modifiedPet.petShirtOptions.indexOf(lookUp.awardID);
                             if (indexremoved != -1)
                                 modifiedPet.petShirtOptions.splice(indexremoved, 1);
-                            console.log(indexremoved + " is removed");
                         } else { // if not shirt it has to be pants
-                            var indexremoved = modifiedPet.petShirtOptions.indexOf(lookUp.awardID);
+                            var indexremoved = modifiedPet.petPantsOptions.indexOf(lookUp.awardID);
                             if (indexremoved != -1)
-                                modifiedPet.petShirtOptions.splice(indexremoved, 1);
-                            console.log(indexremoved + " is removed");
+                                modifiedPet.petPantsOptions.splice(indexremoved, 1);
                         }
 
                     }
