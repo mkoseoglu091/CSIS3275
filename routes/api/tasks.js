@@ -138,7 +138,7 @@ router.post('/admin', [auth,
                             if (indexfound >= 0)
                                 modifiedPet.petShirtOptions.push(lookUp.awardID);  // solve the problem of repeated award
                         } else { // if not shirt it has to be pants
-                            var indexfound = modifiedPet.petShirtOptions.indexOf(lookUp.awardID);
+                            var indexfound = modifiedPet.petPantsOptions.indexOf(lookUp.awardID);
                             if (indexfound >= 0)
                                 modifiedPet.petPantsOptions.push(lookUp.awardID);
                         }
