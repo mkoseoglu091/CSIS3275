@@ -125,22 +125,41 @@ router.post('/admin', [auth,
             c.tasks.forEach((t) => {
                 if (t.taskID === taskID) {
                     t.taskComplete = taskComplete;
-                    if (taskComplete) { // modified to being true
+
+                    // lookup the awardID and option for the task
+                    var lookUp = awardJson.find(item => item.taskID === taskID);
+
+                    if (taskComplete == "true") { // modified to being true
                         t.taskCompletionDate = Date.now();
                         
-                        // lookup the awardID and option for the task
-                        var lookUp = awardJson.find(item => item.taskID === taskID);
                         // check if award is shirt or pant and add award
                         if (lookUp.option === 'shirt') {
-                            modifiedPet.petShirtOptions.push(lookUp.awardID);
+                            var indexfound = modifiedPet.petShirtOptions.indexOf(lookUp.awardID);
+                            if (indexfound >= 0)
+                                modifiedPet.petShirtOptions.push(lookUp.awardID);  // solve the problem of repeated award
                         } else { // if not shirt it has to be pants
-                            modifiedPet.petPantsOptions.push(lookUp.awardID);
+                            var indexfound = modifiedPet.petShirtOptions.indexOf(lookUp.awardID);
+                            if (indexfound >= 0)
+                                modifiedPet.petPantsOptions.push(lookUp.awardID);
                         }
                         
                         
-                    } else {
+                    } else {  // taskComplete status could be false
                         t.taskCompletionDate = null;
-                        
+
+                        // check if award is shirt or pant and cancel award
+                        if (lookUp.option === 'shirt') {
+                            var indexremoved = modifiedPet.petShirtOptions.indexOf(lookUp.awardID);
+                            if (indexremoved != -1)
+                                modifiedPet.petShirtOptions.splice(indexremoved, 1);
+                            console.log(indexremoved + " is removed");
+                        } else { // if not shirt it has to be pants
+                            var indexremoved = modifiedPet.petShirtOptions.indexOf(lookUp.awardID);
+                            if (indexremoved != -1)
+                                modifiedPet.petShirtOptions.splice(indexremoved, 1);
+                            console.log(indexremoved + " is removed");
+                        }
+
                     }
                 }
             });
