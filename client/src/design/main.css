@@ -1,7 +1,7 @@
 #mainTitle {
     grid-row:1/2;
     grid-column: 1/5;
-    font-size: min(10.3vw, 90px);
+    font-size: 10.3vw;
     height: fit-content;
     margin: 2vh 0.1vw 0.1vh 0vw;
     text-align: center;
@@ -10,8 +10,7 @@
 #grid{
     display: grid;
     height: 85vh;
-    margin: 0 auto;
-    width: min(96vw, 1000px);
+    margin-bottom: 0;
 }
 
 #mainButton{
@@ -23,10 +22,10 @@
 }
 
 .mainButn {
-    width: min(38vw, 400px);
+    width: 38vw;
     height: auto;
     margin-top: 1.2vh;
-    font-size: min(5.1vw, 45px);
+    font-size: 5.1vw;
     padding: 1.3vh 3vw;
     margin-left: 2vw;
 }
@@ -40,9 +39,9 @@
 }
 
 #playButn {
-    width: min(37vw, 300px);
+    width: 37vw;
     height: auto;
-    font-size: min(6.2vw, 50px);
+    font-size: 6.2vw;
     padding: 1.6vh 1.8vw;
     float: right;
     margin-bottom: 4.3vh;
@@ -88,13 +87,13 @@
     float: right;
     margin: 0;
     background-color: black;
-    font-size: min(4.5vw, 20px);
+    font-size: 4.5vw;
     color: white;
     padding: .8vh 1vw 0vh 2.5vw;
 }
 
 #Name{
-    font-size: min(15vw, 90px);
+    font-size: 15vw;
     margin: 0;
     background-color: black;
     color: white;

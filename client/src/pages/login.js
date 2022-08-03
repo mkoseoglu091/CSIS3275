@@ -31,20 +31,21 @@ const LoginPage = ({ login, isAuthenticated }) => {
         <p id="loginTitle"><span className="text">Douglas Orientation</span></p>
 
         <form id="loginForm" className="form" onSubmit={e => onSubmit(e)}>
-          <label htmlFor="stuid"><span className="text">ID</span></label>
-          <br />
-          <input type="text" id="stuID" name="studentID" value={studentID} onChange={e => onChange(e)} />
-          <br />
-          <label htmlFor="stupw"><span className="text">Password</span></label>
-          <br />
-          <input type="password" id="stuPW" name="password" value={password} onChange={e => onChange(e)} />
-          <button type="submit" className="btn btn-primary" id="loginButn">LOGIN</button>
+            <label htmlFor="stuid"><span className="text">ID</span></label>
+            <br />
+            <input type="text" id="stuID" name="studentID" value={studentID} onChange={e => onChange(e)} />
+            <br />
+            <label htmlFor="stupw"><span className="text">Password</span></label>
+            <br />
+            <input type="password" id="stuPW" name="password" value={password} onChange={e => onChange(e)} />
+            <button type="submit" className="btn btn-primary" id="loginButn">LOGIN</button>
         </form>
+        {/*<Link to={"./main"}><button type="submit" className="btn btn-primary" id="loginButn">LOGIN</button></Link>*/}
 
         <div id="loginOther">
-          <p className="forOrReg"><span className="text">Forget Password?</span></p>
-          <p className="forOrReg"><span className="text">Don't have an account?</span></p>
-          <Link to={"/register"} id="regisLink">Register</Link>
+            <p id="forget"><span className="text">Forget Password?</span></p>
+            <p id="register"><span className="text">Don't have an account?</span></p>
+            <Link to={"/register"} id="regisLink">Register</Link>
         </div>
       </Fragment>
     );

@@ -1,44 +1,38 @@
 #loginTitle {
     text-align: center;
-    font-size: min(8.5vw, 80px);
+    font-size: 8.5vw;
     margin-top: 7vh;
 }
 
 #loginForm {
-    width: fit-content;
-    margin: 8vh auto 1vh auto;
+    margin: 8vh 13vw 1vh 13vw;
 }
 
 #loginForm > label {
-    font-size: min(7.5vw, 50px);
+    font-size: 7.5vw;
 }
 
 #loginForm > input {
-    font-size: min(7.5vw, 50px);
+    font-size: 7.5vw;
     height: fit-content;
-    width: min(60vw, 700px);
+    width: 60vw;
     margin-bottom: 3.5vh;
 }
 #loginButn {
     display: block;
     margin: 0 auto;
-    font-size: min(7.5vw, 50px);
+    font-size: 7.5vw;
     margin-bottom: 10vh;
 }
 
 #loginOther {
-    font-size: min(7vw, 40px);
+    font-size: 7vw;
+    margin-left: 5vw;
     line-height: 2.5vh;
-    width: fit-content;
-    margin: 0 auto;
-}
-
-.forOrReg {
-    margin-left: 1vw;
 }
 
 #regisLink {
-    font-size: min(7.5vw, 50px);
+    font-size: 7.5vw;
     color: rgb(111, 0, 155);
     font-style: italic;
     text-decoration: none;

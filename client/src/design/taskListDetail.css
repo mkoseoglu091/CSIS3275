@@ -1,18 +1,26 @@
 #tldetheader {
     margin: 7vh 15vw;
     text-align: center;
-    font-size: min(8.5vw, 80px);
+    font-size: 8.5vw;
 }
 
 #dettable{
     line-height: 5vh;
-    font-size: min(4.5vw, 50px);
+    font-size: 4.5vw;
     margin: 3vh auto;
     background-color: white;
     opacity: 0.7;
     padding: 1.5vh 1vw;
     text-align: center;
     overflow-y: scroll;
-    width: min(80vw, 1000px);
+    width: 80vw;
     height: 40vh;
 }
+
+#tldetbtn1 {
+    display: block;
+    margin: 0 auto;
+    margin-top: 7vh;
+    font-size: 6vw;
+}
+

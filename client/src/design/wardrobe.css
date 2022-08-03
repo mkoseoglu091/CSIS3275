@@ -1,7 +1,7 @@
 #wardrobeTitle {
     color: white;
     background-color: black;
-    font-size: min(12vw, 80px);
+    font-size: 12vw;
     margin: auto;
     width: fit-content;
     height: fit-content;
@@ -23,7 +23,7 @@
 #wardrobeTable {
     margin: 7vh 15.5vw 0 15.5vw;
     height: 48.8vh;
-    overflow-y: scroll;
+    overflow: scroll;
 }
 
 .wardrobeItem {
@@ -36,5 +36,5 @@
     display: block;
     margin: 0 auto;
     margin-top: 1.5vh;
-    font-size: min(5.3vw, 50px);
+    font-size: 5.3vw;
 }

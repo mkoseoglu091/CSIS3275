@@ -43,17 +43,13 @@
     padding: 20px 40px 20px 10px;
 }
 
-#adminTable > tbody > tr > th {
+#adminTable > tr > th {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     height: 30px;
 }
 
-#adminTable > tbody > tr > td {
-    height: fit-content;
-}
-
-#adminTable > tbody > tr > td > input {
+#adminTable > tr > td > input {
     font-family: Arial, Helvetica, sans-serif;
     height: 23px;
     width: 200px;
@@ -63,7 +59,7 @@
     margin: 10px auto;
 }
 
-#adminTable > tbody > tr > td > select {
+#adminTable > tr > td > select {
     font-family: Arial, Helvetica, sans-serif;
     height: 23px;
     width: 80px;
@@ -73,11 +69,12 @@
     margin: 10px auto;
 }
 
-#adminButton {
+.adminButton {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    padding: 7px 17px;
-    width: 100px;
+    font-size: 15px;
+    padding: 5px 15px;
+    width: 90px;
+    height: 30px;
     display: block;
     margin: 10px auto;
     box-shadow: none;
@@ -92,23 +89,19 @@
     padding: 20px;
 }
 
-#taskAppendix > tbody > tr > th {
+#taskAppendix > tr > th {
     border: 1px black solid;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
 }
 
-#taskAppendix > tbody > tr > td {
+#taskAppendix > tr > td {
     font-family: Arial, Helvetica, sans-serif;
     text-transform: none;
     font-size: 18px;
     padding: 10px 0px 0px 10px;
 }
-
-#adminLogout {
+.logout {
     float:right;
     margin-right: 2vw;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    margin-top: 10px;
 }

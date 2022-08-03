@@ -18,29 +18,31 @@ function MainPage({ auth, logout, getUserPet, getUserTasks, pet : { pet, loading
 
     return <Fragment>
       {loading ? <Spinner /> : (
-    <Fragment>
-      <div id="grid">
+        <Fragment>
+        <div id="grid">
         <p id="mainTitle">
-          <span className="text">DOUGLAS COLLEGE</span>
+            <span className="text">DOUGLAS COLLEGE</span>
         </p>
         <div id="image_parent" className="image_parent">
           <img id="mascot" src={MascotImage} alt="roary" />
           <img className="wardrobeItemShirt" src={require(`../resources/s${pet.petShirtSelected??"0"}.png`)} alt="cloth" />
           <img className="wardrobeItemPants" src={require(`../resources/p${pet.petPantsSelected??"0"}.png`)} alt="cloth" />
         </div>
-        <div id="mainButton">
-          <Link to={"/taskList"}><button className="mainButn">TASK LIST</button></Link>
-          <Link to={"/wardrobe"}><button className="mainButn">WARDROBE</button></Link>
-          <Link to={"/setting"}><button className="mainButn">SETTINGS</button></Link>
-          <Link to={"/"}><button className="mainButn" onClick={logout}>LOGOUT</button></Link>
-        </div>
 
-        <div id="mascotName">
-          <a href="/questions.html"><button id="playButn">PLAY</button></a>
-          <p id="nameLabel">MASCOT NAME :</p>
-          <p id="Name">ROARY</p>
+        <div id="mainButton">
+            <Link to={"/taskList"}><button className="mainButn">TASK LIST</button></Link>
+            <Link to={"/wardrobe"}><button className="mainButn">WARDROBE</button></Link>
+            <Link to={"/setting"}><button className="mainButn">SETTINGS</button></Link>
+            <Link to={"/"}><button className="mainButn" onClick={logout}>LOGOUT</button></Link>
         </div>
-      </div>
+    
+        <div id="mascotName">
+            <a href="/questions.html"><button id="playButn">PLAY</button></a>
+            <p id="nameLabel">MASCOT NAME :</p>
+            <p id="Name">ROARY</p>
+        </div>
+          <p>{/*pet.petShirtSelected*/}</p> {/*This was causing issues before but now seems to work. If it end up failing remove the spinner*/}
+        </div>
     </Fragment>
       )}
     </Fragment> 

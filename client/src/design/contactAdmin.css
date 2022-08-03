@@ -1,6 +1,6 @@
 #contactUs {
     text-align: center;
-    font-size: min(8.5vw, 85px);
+    font-size: 8.5vw;
     margin-top: 13vh;
 }
 
@@ -11,20 +11,13 @@
     margin-top: 3vh;
     height: 30vh;
     width: 70vw;
-    font-size: min(7vw, 60px);
-    margin-bottom: 8vh;
+    font-size: 7vw;
+    margin-bottom: 15vh;
 }
 
 #contactAdminButn {
     display: block;
     margin: 0 auto;
     margin-top: 1vh;
-    font-size: min(7vw, 70px);
-}
-
-#submitRes {
-    text-align: center;
-    margin: 7vh auto;
-    font-size: min(5.5vw, 50px);
-    color: rgb(207, 86, 0);
+    font-size: 7vw;
 }

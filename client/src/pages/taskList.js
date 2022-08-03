@@ -32,11 +32,9 @@ function TaskListPage({ auth, setAlert, getUserTasks, tasks: {tasks, loading} })
           <img id="backArrow_none" src={BackArrow} alt="backArrow" />
    
           <p id="tlheader"><span className="text">task list</span></p>
-          <div id="taskContainer">
-            { tasksArray.map(task => (
-              <TaskCard task={task} key={task.taskID}/>
-            )) }
-          </div>
+          { tasksArray.map(task => (
+            <TaskCard task={task} key={task.taskID}/>
+          )) }
   
         </Fragment>}
       
