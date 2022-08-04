@@ -62,7 +62,7 @@ This document contains information on how to install the app to run locally. If 
 
 <br></br>
 
-## How to Use the Web Application (User)
+## How to Use the Web Application (Admin)
 
 1. To log in as admin, go to /adminlogin page.
 2. There are already a few admin accounts added to the system. To test please use admin1@gmail.com as login email and 12345678 as admin password.
